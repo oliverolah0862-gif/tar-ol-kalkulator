@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Tar-Ol Metal Kalkulátor</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body {
+    font-family: Arial;
+    background: #f2f2f2;
+    padding: 20px;
+}
+
+.kalkulator {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+label {
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    background: #222;
+    color: white;
+}
+
+.eredmeny {
+    margin-top: 20px;
+    padding: 15px;
+    background: #eeeeee;
+    border-radius: 10px;
+}
+
+.ar {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="kalkulator">
+
+<h1>🔩 TAR-OL METAL</h1>
+
+<h2>Árkalkulátor</h2>
+
+<label>Zártszelvény:</label>
+
+<select id="profil">
+
+<option value="7200">40×40 – 7200 Ft / 6 m</option>
+
+<option value="8770">60×30 – 8770 Ft / 6 m</option>
+
+<option value="9500">60×40 – 9500 Ft / 6 m</option>
+
+<option value="6570">40×30 – 6570 Ft / 6 m</option>
+
+<option value="5290">40×20 – 5290 Ft / 6 m</option>
+
+<option value="5380">30×30 – 5380 Ft / 6 m</option>
+
+<option value="5394">25×25 – 5394 Ft / 6 m</option>
+
+</select>
+
+
+<label>Szükséges szálak:</label>
+
+<input type="number" id="darab" value="1" min="1">
+
+
+<label>Munkadíj (Ft):</label>
+
+<input type="number" id="munka" value="0">
+
+
+<label>Festés (Ft):</label>
+
+<input type="number" id="festes" value="0">
+
+
+<label>Egyéb költség (Ft):</label>
+
+<input type="number" id="egyeb" value="0">
+
+
+<label>Haszonkulcs (%):</label>
+
+<input type="number" id="haszon" value="30">
+
+
+<button onclick="szamol()">
+
+ÁR KISZÁMÍTÁSA
+
+</button>
+
+
+<div class="eredmeny">
+
+<p>Anyagköltség:</p>
+
+<p id="anyag">0 Ft</p>
+
+<p>Önköltség:</p>
+
+<p id="koltseg">0 Ft</p>
+
+<p>Haszon:</p>
+
+<p id="haszonAr">0 Ft</p>
+
+<p>Végső eladási ár:</p>
+
+<p class="ar" id="vegso">0 Ft</p>
+
+</div>
+
+</div>
+
+
+<script>
+
+function szamol() {
+
+    let ar = Number(
+        document.getElementById("profil").value
+    );
+
+    let darab = Number(
+        document.getElementById("darab").value
+    );
+
+    let munka = Number(
+        document.getElementById("munka").value
+    );
+
+    let festes = Number(
+        document.getElementById("festes").value
+    );
+
+    let egyeb = Number(
+        document.getElementById("egyeb").value
+    );
+
+    let haszon = Number(
+        document.getElementById("haszon").value
+    );
+
+
+    let anyagkoltseg = ar * darab;
+
+    let koltseg =
+        anyagkoltseg +
+        munka +
+        festes +
+        egyeb;
+
+    let haszonAr =
+        koltseg * haszon / 100;
+
+    let vegso =
+        koltseg + haszonAr;
+
+
+    document.getElementById("anyag").innerHTML =
+        anyagkoltseg.toFixed(0) + " Ft";
+
+    document.getElementById("koltseg").innerHTML =
+        koltseg.toFixed(0) + " Ft";
+
+    document.getElementById("haszonAr").innerHTML =
+        haszonAr.toFixed(0) + " Ft";
+
+    document.getElementById("vegso").innerHTML =
+        vegso.toFixed(0) + " Ft";
+
+}
+
+</script>
+
+</body>
+
+</html>
