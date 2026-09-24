@@ -212,6 +212,32 @@ button {
 
 <script>
 
+let anyagarak = {
+    "40x40": 7200,
+    "60x30": 8770,
+    "60x40": 9500,
+    "40x30": 6570,
+    "40x20": 5290,
+    "30x30": 5380,
+    "25x25": 5394
+};
+
+let mentettArak = localStorage.getItem("tarOlAnyagarak");
+
+if (mentettArak) {
+
+    anyagarak = JSON.parse(mentettArak);
+
+    document.getElementById("ar40x40").value = anyagarak["40x40"];
+    document.getElementById("ar60x30").value = anyagarak["60x30"];
+    document.getElementById("ar60x40").value = anyagarak["60x40"];
+    document.getElementById("ar40x30").value = anyagarak["40x30"];
+    document.getElementById("ar40x20").value = anyagarak["40x20"];
+    document.getElementById("ar30x30").value = anyagarak["30x30"];
+    document.getElementById("ar25x25").value = anyagarak["25x25"];
+
+}
+
 function beallitasokMutatasa() {
 
     let beallitasok = document.getElementById("beallitasok");
@@ -245,6 +271,29 @@ function arakMentese() {
     alert("✅ Anyagárak elmentve!");
 
 }
+
+function anyagarakBetoltese() {
+
+    let mentettArak = localStorage.getItem("tarOlAnyagarak");
+
+    if (mentettArak) {
+
+        anyagarak = JSON.parse(mentettArak);
+
+        document.getElementById("ar40x40").value = anyagarak["40x40"];
+        document.getElementById("ar60x30").value = anyagarak["60x30"];
+        document.getElementById("ar60x40").value = anyagarak["60x40"];
+        document.getElementById("ar40x30").value = anyagarak["40x30"];
+        document.getElementById("ar40x20").value = anyagarak["40x20"];
+        document.getElementById("ar30x30").value = anyagarak["30x30"];
+        document.getElementById("ar25x25").value = anyagarak["25x25"];
+
+    }
+
+}
+
+anyagarakBetoltese();
+    
 function szamol() {
 
     let profil = dokument.getElementById("darab").value
