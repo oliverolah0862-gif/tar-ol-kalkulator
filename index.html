@@ -124,7 +124,7 @@ button {
         <label>25×25 – Ft / 6 m:</label>
         <input type="number" id="ar25x25" value="5394">
 
-        <button>
+        <button onclick=arakMentese()">
             💾 ÁRAK MENTÉSE
         </button>
 
@@ -227,7 +227,24 @@ function beallitasokMutatasa() {
     }
 
 }
+function arakMentese() {
 
+    anyagarak["40x40"] = Number(document.getElementById("ar40x40").value);
+    anyagarak["60x30"] = Number(document.getElementById("ar60x30").value);
+    anyagarak["60x40"] = Number(document.getElementById("ar60x40").value);
+    anyagarak["40x30"] = Number(document.getElementById("ar40x30").value);
+    anyagarak["40x20"] = Number(document.getElementById("ar40x20").value);
+    anyagarak["30x30"] = Number(document.getElementById("ar30x30").value);
+    anyagarak["25x25"] = Number(document.getElementById("ar25x25").value);
+
+    localStorage.setItem(
+        "tarOlAnyagarak",
+        JSON.stringify(anyagarak)
+    );
+
+    alert("✅ Anyagárak elmentve!");
+
+}
 function szamol() {
 
     let profil = dokument.getElementById("darab").value
