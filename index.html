@@ -79,6 +79,41 @@ button {
 
 <h2>Árkalkulátor</h2>
 
+<button onclick="beallitasokMutatasa()">
+    ⚙️ ANYAGÁRAK
+</button>
+
+<div id="beallitasok" style="display:none; margin-top:20px;">
+
+    <h2>⚙️ Anyagárak</h2>
+
+    <label>40×40 – Ft / 6 m:</label>
+    <input type="number" id="ar40x40" value="7200">
+
+    <label>60×30 – Ft / 6 m:</label>
+    <input type="number" id="ar60x30" value="8770">
+
+    <label>60×40 – Ft / 6 m:</label>
+    <input type="number" id="ar60x40" value="9500">
+
+    <label>40×30 – Ft / 6 m:</label>
+    <input type="number" id="ar40x30" value="6570">
+
+    <label>40×20 – Ft / 6 m:</label>
+    <input type="number" id="ar40x20" value="5290">
+
+    <label>30×30 – Ft / 6 m:</label>
+    <input type="number" id="ar30x30" value="5380">
+
+    <label>25×25 – Ft / 6 m:</label>
+    <input type="number" id="ar25x25" value="5394">
+
+    <button onclick="arakMentese()">
+        💾 ÁRAK MENTÉSE
+    </button>
+
+</div>
+
 <label>Zártszelvény:</label>
 
 <select id="profil">
