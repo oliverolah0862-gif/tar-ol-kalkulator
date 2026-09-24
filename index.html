@@ -124,7 +124,7 @@ button {
         <label>25×25 – Ft / 6 m:</label>
         <input type="number" id="ar25x25" value="5394">
 
-        <button onclick="alert(A GOMB MUKODIK!')">
+        <button onclick="arakMentese()">
             💾 ÁRAK MENTÉSE
         </button>
 
@@ -222,11 +222,23 @@ let anyagarak = {
     "25x25": 5394
 };
 
+
+// ====================
+// ANYAGÁRAK BETÖLTÉSE
+// ====================
+
 let mentettArak = localStorage.getItem("tarOlAnyagarak");
 
 if (mentettArak) {
-
     anyagarak = JSON.parse(mentettArak);
+}
+
+
+// ====================
+// ANYAGÁRAK MEGJELENÍTÉSE
+// ====================
+
+function arakFrissitese() {
 
     document.getElementById("ar40x40").value = anyagarak["40x40"];
     document.getElementById("ar60x30").value = anyagarak["60x30"];
@@ -238,21 +250,11 @@ if (mentettArak) {
 
 }
 
-function beallitasokMutatasa() {
 
-    let beallitasok = document.getElementById("beallitasok");
+// ====================
+// ÁRAK MENTÉSE
+// ====================
 
-    if (beallitasok.style.display === "none") {
-
-        beallitasok.style.display = "block";
-
-    } else {
-
-        beallitasok.style.display = "none";
-
-    }
-
-}
 function arakMentese() {
 
     anyagarak["40x40"] = Number(document.getElementById("ar40x40").value);
@@ -272,35 +274,16 @@ function arakMentese() {
 
 }
 
-function anyagarakBetoltese() {
 
-    let mentettArak = localStorage.getItem("tarOlAnyagarak");
+// ====================
+// KALKULÁTOR
+// ====================
 
-    if (mentettArak) {
-
-        anyagarak = JSON.parse(mentettArak);
-
-        document.getElementById("ar40x40").value = anyagarak["40x40"];
-        document.getElementById("ar60x30").value = anyagarak["60x30"];
-        document.getElementById("ar60x40").value = anyagarak["60x40"];
-        document.getElementById("ar40x30").value = anyagarak["40x30"];
-        document.getElementById("ar40x20").value = anyagarak["40x20"];
-        document.getElementById("ar30x30").value = anyagarak["30x30"];
-        document.getElementById("ar25x25").value = anyagarak["25x25"];
-
-    }
-
-}
-
-anyagarakBetoltese();
-    
 function szamol() {
 
-    let profil = dokument.getElementById("darab").value
-    
+    let profil = document.getElementById("profil").value;
+
     let ar = anyagarak[profil];
-        document.getElementById("profil").value
-    );
 
     let darab = Number(
         document.getElementById("darab").value
@@ -351,6 +334,13 @@ function szamol() {
         vegso.toFixed(0) + " Ft";
 
 }
+
+
+// ====================
+// INDULÁSKOR
+// ====================
+
+arakFrissitese();
 
 </script>
 
