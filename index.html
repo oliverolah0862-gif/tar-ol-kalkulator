@@ -79,38 +79,58 @@ button {
 
 <h2>Árkalkulátor</h2>
 
-<button onclick="dokument.getElementById('beallitasok').style.display='block'">
-    ⚙️ ANYAGÁRAK
-</button>
+<details style="margin-bottom:20px;">
 
-<div id="beallitasok" style="display:none; margin-top:20px;">
+    <summary style="
+        background:#222;
+        color:white;
+        padding:15px;
+        border-radius:10px;
+        font-size:18px;
+        font-weight:bold;
+        text-align:center;
+        cursor:pointer;
+    ">
+        ⚙️ ANYAGÁRAK
+    </summary>
 
-    <h2>⚙️ Anyagárak</h2>
+    <div style="
+        background:#f2f2f2;
+        padding:15px;
+        margin-top:10px;
+        border-radius:10px;
+    ">
 
-    <label>40×40 – Ft / 6 m:</label>
-    <input type="number" id="ar40x40" value="7200">
+        <h2>⚙️ Anyagárak</h2>
 
-    <label>60×30 – Ft / 6 m:</label>
-    <input type="number" id="ar60x30" value="8770">
+        <label>40×40 – Ft / 6 m:</label>
+        <input type="number" id="ar40x40" value="7200">
 
-    <label>60×40 – Ft / 6 m:</label>
-    <input type="number" id="ar60x40" value="9500">
+        <label>60×30 – Ft / 6 m:</label>
+        <input type="number" id="ar60x30" value="8770">
 
-    <label>40×30 – Ft / 6 m:</label>
-    <input type="number" id="ar40x30" value="6570">
+        <label>60×40 – Ft / 6 m:</label>
+        <input type="number" id="ar60x40" value="9500">
 
-    <label>40×20 – Ft / 6 m:</label>
-    <input type="number" id="ar40x20" value="5290">
+        <label>40×30 – Ft / 6 m:</label>
+        <input type="number" id="ar40x30" value="6570">
 
-    <label>30×30 – Ft / 6 m:</label>
-    <input type="number" id="ar30x30" value="5380">
+        <label>40×20 – Ft / 6 m:</label>
+        <input type="number" id="ar40x20" value="5290">
 
-    <label>25×25 – Ft / 6 m:</label>
-    <input type="number" id="ar25x25" value="5394">
+        <label>30×30 – Ft / 6 m:</label>
+        <input type="number" id="ar30x30" value="5380">
 
-    <button onclick="arakMentese()">
-        💾 ÁRAK MENTÉSE
-    </button>
+        <label>25×25 – Ft / 6 m:</label>
+        <input type="number" id="ar25x25" value="5394">
+
+        <button>
+            💾 ÁRAK MENTÉSE
+        </button>
+
+    </div>
+
+</details>
 
 </div>
 
