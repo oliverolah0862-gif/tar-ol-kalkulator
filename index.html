@@ -299,6 +299,24 @@ function szamol() {
         document.getElementById("darab").value
     );
 
+    let meretek = {
+    "40x40": [0.04, 0.04],
+    "60x30": [0.06, 0.03],
+    "60x40": [0.06, 0.04],
+    "40x30": [0.04, 0.03],
+    "40x20": [0.04, 0.02],
+    "30x30": [0.03, 0.03],
+    "25x25": [0.025, 0.025]
+};
+
+let szelesseg = meretek[profil][0];
+let magassag = meretek[profil][1];
+
+let felulet = 2 * (szelesseg + magassag) * 6 * darab;
+
+document.getElementById("felulet").innerHTML =
+    "🎨 Festendő felület: " + felulet.toFixed(2) + " m²";
+    
     let munka = Number(
         document.getElementById("munka").value
     );
