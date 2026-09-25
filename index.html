@@ -342,6 +342,32 @@ function szamol() {
 
 arakFrissitese();
 
+function profilArakFrissitese() {
+
+    document.querySelector('#profil option[value="40x40"]').textContent =
+        "40×40 – " + anyagarak["40x40"] + " Ft / 6 m";
+
+    document.querySelector('#profil option[value="60x30"]').textContent =
+        "60×30 – " + anyagarak["60x30"] + " Ft / 6 m";
+
+    document.querySelector('#profil option[value="60x40"]').textContent =
+        "60×40 – " + anyagarak["60x40"] + " Ft / 6 m";
+
+    document.querySelector('#profil option[value="40x30"]').textContent =
+        "40×30 – " + anyagarak["40x30"] + " Ft / 6 m";
+
+    document.querySelector('#profil option[value="40x20"]').textContent =
+        "40×20 – " + anyagarak["40x20"] + " Ft / 6 m";
+
+    document.querySelector('#profil option[value="30x30"]').textContent =
+        "30×30 – " + anyagarak["30x30"] + " Ft / 6 m";
+
+    document.querySelector('#profil option[value="25x25"]').textContent =
+        "25×25 – " + anyagarak["25x25"] + " Ft / 6 m";
+}
+
+profilArakFrissitese();
+
 </script>
 
 </body>
