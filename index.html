@@ -154,7 +154,26 @@ button {
 
 </select>
 
+<hr>
 
+<h2>🔩 Laposacél</h2>
+
+<label>Laposacél mérete:</label>
+
+<select id="laposmeret">
+
+<option value="1865">20×3 – 1865 Ft / szál</option>
+<option value="2375">25×3 – 2375 Ft / szál</option>
+<option value="2690">30×3 – 2690 Ft / szál</option>
+<option value="3650">40×3 – 3650 Ft / szál</option>
+<option value="4670">50×3 – 4670 Ft / szál</option>
+<option value="6100">60×3 – 6100 Ft / szál</option>
+
+</select>
+
+<label>Laposacél szálak száma:</label>
+
+<input type="number" id="laposdarab" value="1" min="1">
 <label>Szükséges szálak:</label>
 
 <input type="number" id="darab" value="1" min="1">
@@ -319,7 +338,13 @@ function szamol() {
     let darab = Number(
         document.getElementById("darab").value
     );
+let laposAr = Number(
+    document.getElementById("laposmeret").value
+);
 
+let laposDarab = Number(
+    document.getElementById("laposdarab").value
+);
     let meretek = {
     "40x40": [0.04, 0.04],
     "60x30": [0.06, 0.03],
@@ -363,7 +388,7 @@ document.getElementById("festekMennyiseg").innerHTML =
     );
 
 
-    let anyagkoltseg = ar * darab;
+    let anyagkoltseg = (ar * darab) + (laposAr * laposDarab);
 
     let koltseg =
         anyagkoltseg +
