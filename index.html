@@ -322,6 +322,10 @@ hr {
 <!-- FESTÉS -->
 <!-- ========================= -->
 
+<!-- ========================= -->
+<!-- FESTÉS -->
+<!-- ========================= -->
+
 <h2>🎨 Festés</h2>
 
 <div class="felulet">
@@ -330,7 +334,17 @@ hr {
 </div>
 
 
-<label>Festék kiadóssága (m²/l):</label>
+<label>Festék típusa:</label>
+
+<select id="festekTipus">
+
+<option value="6000">1K festék – 6000 Ft/l</option>
+<option value="13000">2K festék – 13000 Ft/l</option>
+
+</select>
+
+
+<label>Fedőfesték kiadóssága (m²/l):</label>
 
 <input
     type="number"
@@ -342,8 +356,53 @@ hr {
 
 
 <div class="felulet">
-🪣 Szükséges festék:
+🪣 Szükséges fedőfesték:
 <span id="festekMennyiseg">0.00</span> liter
+</div>
+
+
+<div class="felulet">
+💰 Fedőfesték költsége:
+<span id="festekKoltseg">0</span> Ft
+</div>
+
+
+<label>Alapozó használata:</label>
+
+<select id="alapozo">
+
+<option value="0">Nem</option>
+<option value="1">Igen</option>
+
+</select>
+
+
+<label>Alapozó kiadóssága (m²/l):</label>
+
+<input
+    type="number"
+    id="alapozoKiadossag"
+    value="8"
+    min="0.1"
+    step="0.1"
+>
+
+
+<div class="felulet">
+🪣 Szükséges alapozó:
+<span id="alapozoMennyiseg">0.00</span> liter
+</div>
+
+
+<div class="felulet">
+💰 Alapozó költsége:
+<span id="alapozoKoltseg">0</span> Ft
+</div>
+
+
+<div class="eredmeny-doboz">
+🎨 Teljes festékanyag-költség:
+<span id="festekOsszesen">0</span> Ft
 </div>
 
 
@@ -688,18 +747,94 @@ function szamol() {
     /* FESTÉK */
     /* ========================= */
 
-    let kiadossag =
-        Number(
-            document.getElementById("kiadossag").value
-        );
+/* ========================= */
+/* FESTÉK */
+/* ========================= */
+
+let festekAr =
+    Number(
+        document.getElementById("festekTipus").value
+    );
 
 
-    let szuksegesFestek =
-        felulet / kiadossag;
+let kiadossag =
+    Number(
+        document.getElementById("kiadossag").value
+    );
 
 
-    document.getElementById("festekMennyiseg").innerHTML =
-        szuksegesFestek.toFixed(2);
+let szuksegesFestek =
+    felulet / kiadossag;
+
+
+let festekKoltseg =
+    szuksegesFestek * festekAr;
+
+
+document.getElementById("festekMennyiseg").innerHTML =
+    szuksegesFestek.toFixed(2);
+
+
+document.getElementById("festekKoltseg").innerHTML =
+    festekKoltseg.toFixed(0);
+
+
+/* ========================= */
+/* ALAPOZÓ */
+/* ========================= */
+
+let alapozo =
+    Number(
+        document.getElementById("alapozo").value
+    );
+
+
+let alapozoKiadossag =
+    Number(
+        document.getElementById("alapozoKiadossag").value
+    );
+
+
+let alapozoMennyiseg = 0;
+let alapozoKoltseg = 0;
+
+
+/*
+   Ha van alapozó,
+   kiszámoljuk a szükséges mennyiséget
+   és annak költségét.
+*/
+
+if (alapozo === 1) {
+
+    alapozoMennyiseg =
+        felulet / alapozoKiadossag;
+
+    alapozoKoltseg =
+        alapozoMennyiseg * 10000;
+
+}
+
+
+document.getElementById("alapozoMennyiseg").innerHTML =
+    alapozoMennyiseg.toFixed(2);
+
+
+document.getElementById("alapozoKoltseg").innerHTML =
+    alapozoKoltseg.toFixed(0);
+
+
+/* ========================= */
+/* TELJES FESTÉKANYAG */
+/* ========================= */
+
+let festekOsszesen =
+    festekKoltseg +
+    alapozoKoltseg;
+
+
+document.getElementById("festekOsszesen").innerHTML =
+    festekOsszesen.toFixed(0);
 
 
     /* ========================= */
@@ -757,10 +892,10 @@ function szamol() {
     /* ========================= */
 
     let koltseg =
-        anyagkoltseg +
-        munka +
-        festes +
-        egyeb;
+    anyagkoltseg +
+    munka +
+    festekOsszesen +
+    egyeb;
 
 
     /* ========================= */
