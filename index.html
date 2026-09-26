@@ -763,17 +763,26 @@ let kiadossag =
     );
 
 
-let szuksegesFestek =
-    felulet / kiadossag;
-
-
-let festekKoltseg =
-    szuksegesFestek * festekAr;
 
 
 document.getElementById("festekMennyiseg").innerHTML =
     szuksegesFestek.toFixed(2);
+let szuksegesFestek =
+    felulet / kiadossag;
 
+
+/*
+   Kikeverendő mennyiség:
+   mindig 0,5 literes lépésekben
+   felfelé kerekítünk.
+*/
+
+let kikeverendoFestek =
+    Math.ceil(szuksegesFestek / 0.5) * 0.5;
+
+
+let festekKoltseg =
+    kikeverendoFestek * festekAr;
 
 document.getElementById("festekKoltseg").innerHTML =
     festekKoltseg.toFixed(0);
