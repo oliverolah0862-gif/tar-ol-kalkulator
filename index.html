@@ -72,6 +72,44 @@ input {
     font-size: 17px;
 }
 
+.anyag-sor {
+    margin-top: 18px;
+    padding: 15px;
+    background: #f5f5f5;
+    border-radius: 15px;
+    border: 1px solid #dddddd;
+}
+
+.anyag-fejlec {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.torles-gomb {
+    border: none;
+    background: #dddddd;
+    border-radius: 10px;
+    padding: 8px 11px;
+    font-size: 18px;
+}
+
+.hozzaad-gomb {
+    width: 100%;
+    margin-top: 15px;
+    padding: 15px;
+    border: 2px dashed #777777;
+    border-radius: 13px;
+    background: white;
+    color: #222222;
+    font-size: 17px;
+    font-weight: bold;
+}
+
 .eredmeny-doboz {
     margin-top: 15px;
     padding: 14px;
@@ -95,12 +133,6 @@ input {
 
 .gomb:active {
     transform: scale(0.98);
-}
-
-.kis-info {
-    color: #666666;
-    font-size: 14px;
-    margin-top: 5px;
 }
 
 .eredmeny {
@@ -138,10 +170,10 @@ input {
     font-weight: bold;
 }
 
-hr {
-    margin: 30px 0;
-    border: none;
-    border-top: 2px solid #222;
+.kis-info {
+    color: #666666;
+    font-size: 14px;
+    margin-top: 5px;
 }
 
 </style>
@@ -162,165 +194,21 @@ hr {
 
 
 <!-- ========================= -->
-<!-- ZÁRTSZELVÉNY -->
+<!-- ANYAGLISTA -->
 <!-- ========================= -->
 
-<h2>🔩 Zártszelvény</h2>
+<h2>🔩 Anyaglista</h2>
 
-<label>Zártszelvény mérete:</label>
+<div id="anyaglista"></div>
 
-<select id="profil">
-
-<option value="2250">15×15×1,5 – 2250 Ft / szál</option>
-<option value="2615">20×10×1,5 – 2615 Ft / szál</option>
-<option value="3185">20×20×1,5 – 3185 Ft / szál</option>
-<option value="3365">20×20×2 – 3365 Ft / szál</option>
-<option value="6130">20×20×3 – 6130 Ft / szál</option>
-<option value="4495">25×25×2 – 4495 Ft / szál</option>
-<option value="4355">30×20×2 – 4355 Ft / szál</option>
-<option value="4900">30×30×1,5 – 4900 Ft / szál</option>
-<option value="5380">30×30×2 – 5380 Ft / szál</option>
-<option value="7795">30×30×3 – 7795 Ft / szál</option>
-<option value="6570">35×35×2 – 6570 Ft / szál</option>
-<option value="4900">40×20×1,5 – 4900 Ft / szál</option>
-<option value="5290">40×20×2 – 5290 Ft / szál</option>
-<option value="6570">40×30×2 – 6570 Ft / szál</option>
-<option value="6310">40×40×1,5 – 6310 Ft / szál</option>
-<option value="7200">40×40×2 – 7200 Ft / szál</option>
-<option value="10565">40×40×3 – 10565 Ft / szál</option>
-<option value="13445">40×40×4 – 13445 Ft / szál</option>
-<option value="6930">50×20×2 – 6930 Ft / szál</option>
-<option value="7625">50×30×2 – 7625 Ft / szál</option>
-<option value="10895">50×30×3 – 10895 Ft / szál</option>
-<option value="8770">50×40×2 – 8770 Ft / szál</option>
-<option value="12445">50×40×3 – 12445 Ft / szál</option>
-<option value="9380">50×50×2 – 9380 Ft / szál</option>
-<option value="13600">50×50×3 – 13600 Ft / szál</option>
-<option value="17990">50×50×4 – 17990 Ft / szál</option>
-<option value="21960">50×50×5 – 21960 Ft / szál</option>
-<option value="7970">60×20×2 – 7970 Ft / szál</option>
-<option value="8770">60×30×2 – 8770 Ft / szál</option>
-<option value="12620">60×30×3 – 12620 Ft / szál</option>
-<option value="9220">60×40×2 – 9220 Ft / szál</option>
-<option value="13600">60×40×3 – 13600 Ft / szál</option>
-<option value="17990">60×40×4 – 17990 Ft / szál</option>
-<option value="11395">60×60×2 – 11395 Ft / szál</option>
-<option value="16615">60×60×3 – 16615 Ft / szál</option>
-<option value="21480">60×60×4 – 21480 Ft / szál</option>
-<option value="27210">60×60×5 – 27210 Ft / szál</option>
-<option value="20335">70×70×3 – 20335 Ft / szál</option>
-<option value="26675">70×70×4 – 26675 Ft / szál</option>
-<option value="11775">80×40×2 – 11775 Ft / szál</option>
-<option value="16615">80×40×3 – 16615 Ft / szál</option>
-<option value="22145">80×40×4 – 22145 Ft / szál</option>
-<option value="18950">80×50×3 – 18950 Ft / szál</option>
-<option value="24565">80×50×4 – 24565 Ft / szál</option>
-<option value="20230">80×60×3 – 20230 Ft / szál</option>
-<option value="26675">80×60×4 – 26675 Ft / szál</option>
-<option value="22630">80×80×3 – 22630 Ft / szál</option>
-<option value="29510">80×80×4 – 29510 Ft / szál</option>
-<option value="26810">90×90×3 – 26810 Ft / szál</option>
-<option value="35140">90×90×4 – 35140 Ft / szál</option>
-<option value="13865">100×40×2 – 13865 Ft / szál</option>
-<option value="20230">100×40×3 – 20230 Ft / szál</option>
-<option value="27785">100×40×4 – 27785 Ft / szál</option>
-<option value="21125">100×50×3 – 21125 Ft / szál</option>
-<option value="23335">100×60×3 – 23335 Ft / szál</option>
-<option value="27930">100×80×3 – 27930 Ft / szál</option>
-<option value="28680">100×100×3 – 28680 Ft / szál</option>
-
-</select>
-
-
-<label>Zártszelvény szálak száma:</label>
-
-<input
-    type="number"
-    id="darab"
-    value="1"
-    min="0"
+<button
+    type="button"
+    class="hozzaad-gomb"
+    onclick="anyagHozzaad()"
 >
+➕ ANYAG HOZZÁADÁSA
+</button>
 
-
-<!-- ========================= -->
-<!-- LAPOSACÉL -->
-<!-- ========================= -->
-
-<h2>📏 Laposacél</h2>
-
-<label>Laposacél mérete:</label>
-
-<select id="laposmeret">
-
-<option value="1865">20×3 – 1865 Ft / szál</option>
-<option value="2375">25×3 – 2375 Ft / szál</option>
-<option value="2690">30×3 – 2690 Ft / szál</option>
-<option value="3650">40×3 – 3650 Ft / szál</option>
-<option value="4670">50×3 – 4670 Ft / szál</option>
-<option value="6100">60×3 – 6100 Ft / szál</option>
-
-<option value="2380">20×4 – 2380 Ft / szál</option>
-<option value="3300">25×4 – 3300 Ft / szál</option>
-<option value="3740">30×4 – 3740 Ft / szál</option>
-<option value="4910">40×4 – 4910 Ft / szál</option>
-<option value="6115">50×4 – 6115 Ft / szál</option>
-<option value="7805">60×4 – 7805 Ft / szál</option>
-
-</select>
-
-
-<label>Laposacél szálak száma:</label>
-
-<input
-    type="number"
-    id="laposdarab"
-    value="0"
-    min="0"
->
-
-
-<!-- ========================= -->
-<!-- SZÖGVAS -->
-<!-- ========================= -->
-
-<h2>📐 Szögvas</h2>
-
-<label>Szögvas mérete:</label>
-
-<select id="szogmeret">
-
-<option value="3185">20×20×3 – 3185 Ft / szál</option>
-<option value="4180">25×25×3 – 4180 Ft / szál</option>
-<option value="4013">30×30×2,5 – 4013 Ft / szál</option>
-<option value="4820">30×30×3 – 4820 Ft / szál</option>
-<option value="7205">30×30×4 – 7205 Ft / szál</option>
-<option value="5310">35×35×3 – 5310 Ft / szál</option>
-<option value="7315">35×35×4 – 7315 Ft / szál</option>
-<option value="6380">40×40×3 – 6380 Ft / szál</option>
-<option value="8170">40×40×4 – 8170 Ft / szál</option>
-<option value="12085">45×45×5 – 12085 Ft / szál</option>
-<option value="10615">50×50×4 – 10615 Ft / szál</option>
-<option value="12670">50×50×5 – 12670 Ft / szál</option>
-<option value="18060">60×60×6 – 18060 Ft / szál</option>
-<option value="25870">70×70×7 – 25870 Ft / szál</option>
-<option value="32520">80×80×8 – 32520 Ft / szál</option>
-
-</select>
-
-
-<label>Szögvas szálak száma:</label>
-
-<input
-    type="number"
-    id="szogdarab"
-    value="0"
-    min="0"
->
-
-
-<!-- ========================= -->
-<!-- FESTÉS -->
-<!-- ========================= -->
 
 <!-- ========================= -->
 <!-- FESTÉS -->
@@ -356,7 +244,7 @@ hr {
 
 
 <div class="felulet">
-🪣 Szükséges fedőfesték:
+🪣 Kikeverendő fedőfesték:
 <span id="festekMennyiseg">0.00</span> liter
 </div>
 
@@ -422,16 +310,6 @@ hr {
 >
 
 
-<label>Festés (Ft):</label>
-
-<input
-    type="number"
-    id="festes"
-    value="0"
-    min="0"
->
-
-
 <label>Egyéb költség (Ft):</label>
 
 <input
@@ -452,7 +330,11 @@ hr {
 >
 
 
-<button class="gomb" onclick="szamol()">
+<button
+    type="button"
+    class="gomb"
+    onclick="szamol()"
+>
 ÁR KISZÁMÍTÁSA
 </button>
 
@@ -484,6 +366,11 @@ hr {
 </div>
 
 <div class="sor">
+<span>Festékanyag:</span>
+<strong id="festekEredmeny">0 Ft</strong>
+</div>
+
+<div class="sor">
 <span>Önköltség:</span>
 <strong id="koltseg">0 Ft</strong>
 </div>
@@ -508,357 +395,611 @@ Végső eladási ár
 <script>
 
 
-function szamol() {
+/* ===================================================== */
+/* ZÁRTSZELVÉNYEK */
+/* ===================================================== */
+
+const zarAdatok = [
+
+    ["15×15×1,5", 2250, 0.015, 0.015],
+    ["20×10×1,5", 2615, 0.020, 0.010],
+    ["20×20×1,5", 3185, 0.020, 0.020],
+    ["20×20×2", 3365, 0.020, 0.020],
+    ["20×20×3", 6130, 0.020, 0.020],
+    ["25×25×2", 4495, 0.025, 0.025],
+    ["30×20×2", 4355, 0.030, 0.020],
+    ["30×30×1,5", 4900, 0.030, 0.030],
+    ["30×30×2", 5380, 0.030, 0.030],
+    ["30×30×3", 7795, 0.030, 0.030],
+    ["35×35×2", 6570, 0.035, 0.035],
+    ["40×20×1,5", 4900, 0.040, 0.020],
+    ["40×20×2", 5290, 0.040, 0.020],
+    ["40×30×2", 6570, 0.040, 0.030],
+    ["40×40×1,5", 6310, 0.040, 0.040],
+    ["40×40×2", 7200, 0.040, 0.040],
+    ["40×40×3", 10565, 0.040, 0.040],
+    ["40×40×4", 13445, 0.040, 0.040],
+    ["50×20×2", 6930, 0.050, 0.020],
+    ["50×30×2", 7625, 0.050, 0.030],
+    ["50×30×3", 10895, 0.050, 0.030],
+    ["50×40×2", 8770, 0.050, 0.040],
+    ["50×40×3", 12445, 0.050, 0.040],
+    ["50×50×2", 9380, 0.050, 0.050],
+    ["50×50×3", 13600, 0.050, 0.050],
+    ["50×50×4", 17990, 0.050, 0.050],
+    ["50×50×5", 21960, 0.050, 0.050],
+    ["60×20×2", 7970, 0.060, 0.020],
+    ["60×30×2", 8770, 0.060, 0.030],
+    ["60×30×3", 12620, 0.060, 0.030],
+    ["60×40×2", 9220, 0.060, 0.040],
+    ["60×40×3", 13600, 0.060, 0.040],
+    ["60×40×4", 17990, 0.060, 0.040],
+    ["60×60×2", 11395, 0.060, 0.060],
+    ["60×60×3", 16615, 0.060, 0.060],
+    ["60×60×4", 21480, 0.060, 0.060],
+    ["60×60×5", 27210, 0.060, 0.060],
+    ["70×70×3", 20335, 0.070, 0.070],
+    ["70×70×4", 26675, 0.070, 0.070],
+    ["80×40×2", 11775, 0.080, 0.040],
+    ["80×40×3", 16615, 0.080, 0.040],
+    ["80×40×4", 22145, 0.080, 0.040],
+    ["80×50×3", 18950, 0.080, 0.050],
+    ["80×50×4", 24565, 0.080, 0.050],
+    ["80×60×3", 20230, 0.080, 0.060],
+    ["80×60×4", 26675, 0.080, 0.060],
+    ["80×80×3", 22630, 0.080, 0.080],
+    ["80×80×4", 29510, 0.080, 0.080],
+    ["90×90×3", 26810, 0.090, 0.090],
+    ["90×90×4", 35140, 0.090, 0.090],
+    ["100×40×2", 13865, 0.100, 0.040],
+    ["100×40×3", 20230, 0.100, 0.040],
+    ["100×40×4", 27785, 0.100, 0.040],
+    ["100×50×3", 21125, 0.100, 0.050],
+    ["100×60×3", 23335, 0.100, 0.060],
+    ["100×80×3", 27930, 0.100, 0.080],
+    ["100×100×3", 28680, 0.100, 0.100]
+
+];
 
 
-    /* ========================= */
-    /* ZÁRTSZELVÉNY */
-    /* ========================= */
+/* ===================================================== */
+/* LAPOSACÉL */
+/* ===================================================== */
 
-    let profil = document.getElementById("profil");
+const laposAdatok = [
 
-    let ar = Number(profil.value);
+    ["20×3", 1865, 0.020, 0.003],
+    ["25×3", 2375, 0.025, 0.003],
+    ["30×3", 2690, 0.030, 0.003],
+    ["40×3", 3650, 0.040, 0.003],
+    ["50×3", 4670, 0.050, 0.003],
+    ["60×3", 6100, 0.060, 0.003],
 
-    let darab = Number(
-        document.getElementById("darab").value
-    );
+    ["20×4", 2380, 0.020, 0.004],
+    ["25×4", 3300, 0.025, 0.004],
+    ["30×4", 3740, 0.030, 0.004],
+    ["40×4", 4910, 0.040, 0.004],
+    ["50×4", 6115, 0.050, 0.004],
+    ["60×4", 7805, 0.060, 0.004]
 
-
-    /* ========================= */
-    /* LAPOSACÉL */
-    /* ========================= */
-
-    let laposAr = Number(
-        document.getElementById("laposmeret").value
-    );
-
-    let laposDarab = Number(
-        document.getElementById("laposdarab").value
-    );
+];
 
 
-    /* ========================= */
-    /* SZÖGVAS */
-    /* ========================= */
+/* ===================================================== */
+/* SZÖGVAS */
+/* ===================================================== */
 
-    let szogAr = Number(
-        document.getElementById("szogmeret").value
-    );
+const szogAdatok = [
 
-    let szogDarab = Number(
-        document.getElementById("szogdarab").value
-    );
+    ["20×20×3", 3185, 0.020, 0.020, 0.003],
+    ["25×25×3", 4180, 0.025, 0.025, 0.003],
+    ["30×30×2,5", 4013, 0.030, 0.030, 0.0025],
+    ["30×30×3", 4820, 0.030, 0.030, 0.003],
+    ["30×30×4", 7205, 0.030, 0.030, 0.004],
+    ["35×35×3", 5310, 0.035, 0.035, 0.003],
+    ["35×35×4", 7315, 0.035, 0.035, 0.004],
+    ["40×40×3", 6380, 0.040, 0.040, 0.003],
+    ["40×40×4", 8170, 0.040, 0.040, 0.004],
+    ["45×45×5", 12085, 0.045, 0.045, 0.005],
+    ["50×50×4", 10615, 0.050, 0.050, 0.004],
+    ["50×50×5", 12670, 0.050, 0.050, 0.005],
+    ["60×60×6", 18060, 0.060, 0.060, 0.006],
+    ["70×70×7", 25870, 0.070, 0.070, 0.007],
+    ["80×80×8", 32520, 0.080, 0.080, 0.008]
+
+];
 
 
-    /* ========================= */
-    /* MÉRETEK */
-    /* ========================= */
+/* ===================================================== */
+/* ANYAG HOZZÁADÁSA */
+/* ===================================================== */
 
-    let zarMeret = {
-        "15×15×1,5": [0.015, 0.015],
-        "20×10×1,5": [0.020, 0.010],
-        "20×20×1,5": [0.020, 0.020],
-        "20×20×2": [0.020, 0.020],
-        "20×20×3": [0.020, 0.020],
-        "25×25×2": [0.025, 0.025],
-        "30×20×2": [0.030, 0.020],
-        "30×30×1,5": [0.030, 0.030],
-        "30×30×2": [0.030, 0.030],
-        "30×30×3": [0.030, 0.030],
-        "35×35×2": [0.035, 0.035],
-        "40×20×1,5": [0.040, 0.020],
-        "40×20×2": [0.040, 0.020],
-        "40×30×2": [0.040, 0.030],
-        "40×40×1,5": [0.040, 0.040],
-        "40×40×2": [0.040, 0.040],
-        "40×40×3": [0.040, 0.040],
-        "40×40×4": [0.040, 0.040],
-        "50×20×2": [0.050, 0.020],
-        "50×30×2": [0.050, 0.030],
-        "50×30×3": [0.050, 0.030],
-        "50×40×2": [0.050, 0.040],
-        "50×40×3": [0.050, 0.040],
-        "50×50×2": [0.050, 0.050],
-        "50×50×3": [0.050, 0.050],
-        "50×50×4": [0.050, 0.050],
-        "50×50×5": [0.050, 0.050],
-        "60×20×2": [0.060, 0.020],
-        "60×30×2": [0.060, 0.030],
-        "60×30×3": [0.060, 0.030],
-        "60×40×2": [0.060, 0.040],
-        "60×40×3": [0.060, 0.040],
-        "60×40×4": [0.060, 0.040],
-        "60×60×2": [0.060, 0.060],
-        "60×60×3": [0.060, 0.060],
-        "60×60×4": [0.060, 0.060],
-        "60×60×5": [0.060, 0.060],
-        "70×70×3": [0.070, 0.070],
-        "70×70×4": [0.070, 0.070],
-        "80×40×2": [0.080, 0.040],
-        "80×40×3": [0.080, 0.040],
-        "80×40×4": [0.080, 0.040],
-        "80×50×3": [0.080, 0.050],
-        "80×50×4": [0.080, 0.050],
-        "80×60×3": [0.080, 0.060],
-        "80×60×4": [0.080, 0.060],
-        "80×80×3": [0.080, 0.080],
-        "80×80×4": [0.080, 0.080],
-        "90×90×3": [0.090, 0.090],
-        "90×90×4": [0.090, 0.090],
-        "100×40×2": [0.100, 0.040],
-        "100×40×3": [0.100, 0.040],
-        "100×40×4": [0.100, 0.040],
-        "100×50×3": [0.100, 0.050],
-        "100×60×3": [0.100, 0.060],
-        "100×80×3": [0.100, 0.080],
-        "100×100×3": [0.100, 0.100]
+function anyagHozzaad() {
+
+    let lista =
+        document.getElementById("anyaglista");
+
+    let sor =
+        document.createElement("div");
+
+    sor.className = "anyag-sor";
+
+
+    let fejlec =
+        document.createElement("div");
+
+    fejlec.className = "anyag-fejlec";
+
+    fejlec.innerHTML =
+        "<span>🔩 Anyag</span>" +
+        "<button type='button' class='torles-gomb'>🗑️</button>";
+
+
+    let torles =
+        fejlec.querySelector(".torles-gomb");
+
+    torles.onclick = function() {
+
+        sor.remove();
+
+        szamol();
+
     };
 
 
-    /* ========================= */
-    /* KIVÁLASZTOTT MÉRET */
-    /* ========================= */
-
-    let zarSzoveg =
-        profil.options[profil.selectedIndex].text;
-
-    let zarKulcs =
-        zarSzoveg.split(" – ")[0];
-
-    let zarMeretAdat =
-        zarMeret[zarKulcs];
+    sor.appendChild(fejlec);
 
 
-    /* ========================= */
-    /* SZÖGVAS MÉRET */
-    /* ========================= */
+    /* Anyagtípus */
 
-    let szogMeretAdat =
-        szogMeretbol(profil, szogDarab);
+    let tipusLabel =
+        document.createElement("label");
+
+    tipusLabel.innerHTML =
+        "Anyagtípus:";
+
+    sor.appendChild(tipusLabel);
 
 
-    /* ========================= */
-    /* FESTENDŐ FELÜLET */
-    /* ========================= */
+    let tipus =
+        document.createElement("select");
 
-    let zarFelSzelesseg = 0;
-    let zarFelMagassag = 0;
+    tipus.className = "anyag-tipus";
 
-    if (zarMeretAdat) {
 
-        zarFelSzelesseg = zarMeretAdat[0];
-        zarFelMagassag = zarMeretAdat[1];
+    tipus.innerHTML =
+        "<option value='zar'>🔩 Zártszelvény</option>" +
+        "<option value='lapos'>📏 Laposacél</option>" +
+        "<option value='szog'>📐 Szögvas</option>";
+
+
+    sor.appendChild(tipus);
+
+
+    /* Méret */
+
+    let meretLabel =
+        document.createElement("label");
+
+    meretLabel.innerHTML =
+        "Méret:";
+
+    sor.appendChild(meretLabel);
+
+
+    let meret =
+        document.createElement("select");
+
+    meret.className = "anyag-meret";
+
+    sor.appendChild(meret);
+
+
+    /* Mennyiség */
+
+    let darabLabel =
+        document.createElement("label");
+
+    darabLabel.innerHTML =
+        "Szálak száma:";
+
+    sor.appendChild(darabLabel);
+
+
+    let darab =
+        document.createElement("input");
+
+    darab.type = "number";
+    darab.className = "anyag-darab";
+    darab.value = "1";
+    darab.min = "0";
+
+    sor.appendChild(darab);
+
+
+    /* Sor létrehozása */
+
+    lista.appendChild(sor);
+
+
+    /* Méretek feltöltése */
+
+    meretekFrissit(tipus, meret);
+
+
+    tipus.onchange = function() {
+
+        meretekFrissit(tipus, meret);
+
+        szamol();
+
+    };
+
+
+    meret.onchange = function() {
+
+        szamol();
+
+    };
+
+
+    darab.oninput = function() {
+
+        szamol();
+
+    };
+
+
+    szamol();
+
+}
+
+
+/* ===================================================== */
+/* MÉRET LISTA FRISSÍTÉSE */
+/* ===================================================== */
+
+function meretekFrissit(tipus, meret) {
+
+    meret.innerHTML = "";
+
+
+    let adatok;
+
+
+    if (tipus.value === "zar") {
+
+        adatok = zarAdatok;
+
+    }
+
+    else if (tipus.value === "lapos") {
+
+        adatok = laposAdatok;
+
+    }
+
+    else {
+
+        adatok = szogAdatok;
 
     }
 
 
-    /*
-       Zártszelvény:
-       kerület × 6 m × szálak
-    */
+    adatok.forEach(function(adat) {
 
-    let zarFel =
-        2 * (zarFelSzelesseg + zarFelMagassag)
-        * 6
-        * darab;
+        let option =
+            document.createElement("option");
 
+        option.value =
+            adat[1];
 
-    /*
-       Laposacél méretek
-    */
+        option.textContent =
+            adat[0] +
+            " – " +
+            adat[1] +
+            " Ft / szál";
 
-    let laposSzoveg =
-        document.getElementById("laposmeret")
-        .options[
-            document.getElementById("laposmeret").selectedIndex
-        ].text;
+        meret.appendChild(option);
 
-    let laposKulcs =
-        laposSzoveg.split(" – ")[0];
+    });
 
-    let laposAdat =
-        laposKulcs.split("×");
-
-    let laposSzelesseg =
-        Number(laposAdat[0]) / 1000;
-
-    let laposVastagsag =
-        Number(laposAdat[1]) / 1000;
+}
 
 
-    let laposFel =
-        2 * (laposSzelesseg + laposVastagsag)
-        * 6
-        * laposDarab;
+/* ===================================================== */
+/* ANYAG SOROK KISZÁMÍTÁSA */
+/* ===================================================== */
+
+function anyagSzamolas() {
+
+    let sorok =
+        document.querySelectorAll(".anyag-sor");
 
 
-    /*
-       Szögvas felület
-    */
+    let zarAnyag = 0;
+    let laposAnyag = 0;
+    let szogAnyag = 0;
 
-    let szogSzoveg =
-        document.getElementById("szogmeret")
-        .options[
-            document.getElementById("szogmeret").selectedIndex
-        ].text;
-
-    let szogKulcs =
-        szogSzoveg.split(" – ")[0];
-
-    let szogAdat =
-        szogKulcs.split("×");
-
-    let szogA =
-        Number(szogAdat[0]) / 1000;
-
-    let szogB =
-        Number(szogAdat[1]) / 1000;
-
-    let szogVastagsag =
-        Number(szogAdat[2].replace(",", "."))
-        / 1000;
+    let osszesFelület = 0;
 
 
-    /*
-       L profil festendő kerülete
-    */
+    sorok.forEach(function(sor) {
 
-    let szogFel =
-        (2 * (szogA + szogB - szogVastagsag))
-        * 6
-        * szogDarab;
+        let tipus =
+            sor.querySelector(".anyag-tipus").value;
+
+        let meret =
+            sor.querySelector(".anyag-meret");
+
+        let darab =
+            Number(
+                sor.querySelector(".anyag-darab").value
+            );
 
 
-    /*
-       Összes festendő felület
-    */
+        if (darab <= 0) {
+
+            return;
+
+        }
+
+
+        let index =
+            meret.selectedIndex;
+
+
+        if (index < 0) {
+
+            return;
+
+        }
+
+
+        let adat;
+
+
+        if (tipus === "zar") {
+
+            adat = zarAdatok[index];
+
+            let szelesseg = adat[2];
+            let magassag = adat[3];
+
+            zarAnyag +=
+                adat[1] * darab;
+
+
+            let felulet =
+                2 *
+                (szelesseg + magassag) *
+                6 *
+                darab;
+
+
+            osszesFelület +=
+                felulet;
+
+        }
+
+
+        else if (tipus === "lapos") {
+
+            adat = laposAdatok[index];
+
+            let szelesseg = adat[2];
+            let vastagsag = adat[3];
+
+            laposAnyag +=
+                adat[1] * darab;
+
+
+            let felulet =
+                2 *
+                (szelesseg + vastagsag) *
+                6 *
+                darab;
+
+
+            osszesFelület +=
+                felulet;
+
+        }
+
+
+        else if (tipus === "szog") {
+
+            adat = szogAdatok[index];
+
+            let a = adat[2];
+            let b = adat[3];
+            let vastagsag = adat[4];
+
+            szogAnyag +=
+                adat[1] * darab;
+
+
+            let felulet =
+                2 *
+                (a + b - vastagsag) *
+                6 *
+                darab;
+
+
+            osszesFelület +=
+                felulet;
+
+        }
+
+    });
+
+
+    return {
+
+        zarAnyag: zarAnyag,
+
+        laposAnyag: laposAnyag,
+
+        szogAnyag: szogAnyag,
+
+        anyagkoltseg:
+            zarAnyag +
+            laposAnyag +
+            szogAnyag,
+
+        felulet:
+            osszesFelület
+
+    };
+
+}
+
+
+/* ===================================================== */
+/* FŐ SZÁMOLÁS */
+/* ===================================================== */
+
+function szamol() {
+
+
+    let anyag =
+        anyagSzamolas();
+
 
     let felulet =
-        zarFel +
-        laposFel +
-        szogFel;
+        anyag.felulet;
 
 
     document.getElementById("felulet").innerHTML =
         felulet.toFixed(2);
 
 
-    /* ========================= */
+    /* ================================================= */
     /* FESTÉK */
-    /* ========================= */
+    /* ================================================= */
 
-/* ========================= */
-/* FESTÉK */
-/* ========================= */
-
-let festekAr =
-    Number(
-        document.getElementById("festekTipus").value
-    );
+    let festekAr =
+        Number(
+            document.getElementById("festekTipus").value
+        );
 
 
-let kiadossag =
-    Number(
-        document.getElementById("kiadossag").value
-    );
+    let kiadossag =
+        Number(
+            document.getElementById("kiadossag").value
+        );
 
 
+    let szuksegesFestek = 0;
+
+    let kikeverendoFestek = 0;
+
+    let festekKoltseg = 0;
 
 
-document.getElementById("festekMennyiseg").innerHTML =
-    kikeverendoFestek.toFixed(2);
-let szuksegesFestek =
-    felulet / kiadossag;
+    if (
+        felulet > 0 &&
+        kiadossag > 0
+    ) {
+
+        szuksegesFestek =
+            felulet / kiadossag;
 
 
-/*
-   Kikeverendő mennyiség:
-   mindig 0,5 literes lépésekben
-   felfelé kerekítünk.
-*/
+        /*
+           Mindig a következő
+           0,5 literes lépcsőre
+           kerekítünk FELFELÉ.
+        */
 
-let kikeverendoFestek =
-    Math.ceil(szuksegesFestek / 0.5) * 0.5;
-
-
-let festekKoltseg =
-    kikeverendoFestek * festekAr;
-
-document.getElementById("festekKoltseg").innerHTML =
-    festekKoltseg.toFixed(0);
+        kikeverendoFestek =
+            Math.ceil(
+                szuksegesFestek / 0.5
+            ) * 0.5;
 
 
-/* ========================= */
-/* ALAPOZÓ */
-/* ========================= */
+        festekKoltseg =
+            kikeverendoFestek *
+            festekAr;
 
-let alapozo =
-    Number(
-        document.getElementById("alapozo").value
-    );
+    }
 
 
-let alapozoKiadossag =
-    Number(
-        document.getElementById("alapozoKiadossag").value
-    );
+    document.getElementById("festekMennyiseg").innerHTML =
+        kikeverendoFestek.toFixed(2);
 
 
-let alapozoMennyiseg = 0;
-let alapozoKoltseg = 0;
+    document.getElementById("festekKoltseg").innerHTML =
+        festekKoltseg.toFixed(0);
 
 
-/*
-   Ha van alapozó,
-   kiszámoljuk a szükséges mennyiséget
-   és annak költségét.
-*/
+    /* ================================================= */
+    /* ALAPOZÓ */
+    /* ================================================= */
 
-if (alapozo === 1) {
-
-    alapozoMennyiseg =
-        felulet / alapozoKiadossag;
-
-    alapozoKoltseg =
-        alapozoMennyiseg * 10000;
-
-}
+    let alapozo =
+        Number(
+            document.getElementById("alapozo").value
+        );
 
 
-document.getElementById("alapozoMennyiseg").innerHTML =
-    alapozoMennyiseg.toFixed(2);
+    let alapozoKiadossag =
+        Number(
+            document.getElementById("alapozoKiadossag").value
+        );
 
 
-document.getElementById("alapozoKoltseg").innerHTML =
-    alapozoKoltseg.toFixed(0);
+    let alapozoMennyiseg = 0;
+
+    let alapozoKoltseg = 0;
 
 
-/* ========================= */
-/* TELJES FESTÉKANYAG */
-/* ========================= */
+    if (
+        alapozo === 1 &&
+        felulet > 0 &&
+        alapozoKiadossag > 0
+    ) {
 
-let festekOsszesen =
-    festekKoltseg +
-    alapozoKoltseg;
-
-
-document.getElementById("festekOsszesen").innerHTML =
-    festekOsszesen.toFixed(0);
+        alapozoMennyiseg =
+            felulet /
+            alapozoKiadossag;
 
 
-    /* ========================= */
+        alapozoKoltseg =
+            alapozoMennyiseg *
+            10000;
+
+    }
+
+
+    document.getElementById("alapozoMennyiseg").innerHTML =
+        alapozoMennyiseg.toFixed(2);
+
+
+    document.getElementById("alapozoKoltseg").innerHTML =
+        alapozoKoltseg.toFixed(0);
+
+
+    /* ================================================= */
+    /* TELJES FESTÉKANYAG */
+    /* ================================================= */
+
+    let festekOsszesen =
+        festekKoltseg +
+        alapozoKoltseg;
+
+
+    document.getElementById("festekOsszesen").innerHTML =
+        festekOsszesen.toFixed(0);
+
+
+    /* ================================================= */
     /* KÖLTSÉGEK */
-    /* ========================= */
+    /* ================================================= */
 
     let munka =
         Number(
             document.getElementById("munka").value
-        );
-
-
-    let festes =
-        Number(
-            document.getElementById("festes").value
         );
 
 
@@ -874,102 +1015,113 @@ document.getElementById("festekOsszesen").innerHTML =
         );
 
 
-    /* ========================= */
-    /* ANYAGKÖLTSÉG */
-    /* ========================= */
-
-    let zarAnyag =
-        ar * darab;
-
-
-    let laposAnyag =
-        laposAr * laposDarab;
-
-
-    let szogAnyag =
-        szogAr * szogDarab;
-
-
-    let anyagkoltseg =
-        zarAnyag +
-        laposAnyag +
-        szogAnyag;
-
-
-    /* ========================= */
+    /* ================================================= */
     /* ÖNKÖLTSÉG */
-    /* ========================= */
+    /* ================================================= */
 
     let koltseg =
-    anyagkoltseg +
-    munka +
-    festekOsszesen +
-    egyeb;
+        anyag.anyagkoltseg +
+        festekOsszesen +
+        munka +
+        egyeb;
 
 
-    /* ========================= */
+    /* ================================================= */
     /* HASZON */
-    /* ========================= */
+    /* ================================================= */
 
     let haszonAr =
-        koltseg * haszon / 100;
+        koltseg *
+        haszon /
+        100;
 
 
-    /* ========================= */
-    /* ELADÁSI ÁR */
-    /* ========================= */
+    /* ================================================= */
+    /* VÉGSŐ ÁR */
+    /* ================================================= */
 
     let vegso =
-        koltseg + haszonAr;
+        koltseg +
+        haszonAr;
 
 
-    /* ========================= */
+    /* ================================================= */
     /* EREDMÉNY */
-    /* ========================= */
+    /* ================================================= */
 
     document.getElementById("zaranyag").innerHTML =
-        zarAnyag.toFixed(0) + " Ft";
+        anyag.zarAnyag.toFixed(0) +
+        " Ft";
 
 
     document.getElementById("laposanyag").innerHTML =
-        laposAnyag.toFixed(0) + " Ft";
+        anyag.laposAnyag.toFixed(0) +
+        " Ft";
 
 
     document.getElementById("szoganyag").innerHTML =
-        szogAnyag.toFixed(0) + " Ft";
+        anyag.szogAnyag.toFixed(0) +
+        " Ft";
 
 
     document.getElementById("anyag").innerHTML =
-        anyagkoltseg.toFixed(0) + " Ft";
+        anyag.anyagkoltseg.toFixed(0) +
+        " Ft";
+
+
+    document.getElementById("festekEredmeny").innerHTML =
+        festekOsszesen.toFixed(0) +
+        " Ft";
 
 
     document.getElementById("koltseg").innerHTML =
-        koltseg.toFixed(0) + " Ft";
+        koltseg.toFixed(0) +
+        " Ft";
 
 
     document.getElementById("haszonAr").innerHTML =
-        haszonAr.toFixed(0) + " Ft";
+        haszonAr.toFixed(0) +
+        " Ft";
 
 
     document.getElementById("vegso").innerHTML =
-        vegso.toFixed(0) + " Ft";
+        vegso.toFixed(0) +
+        " Ft";
 
 }
 
 
-/*
-   Ez csak azért van, hogy a szögvas
-   kiválasztását külön kezeljük.
-*/
+/* ===================================================== */
+/* INDULÁSKOR EGY ANYAGSOR */
+/* ===================================================== */
 
-function szogMeretbol(profil, darab) {
+anyagHozzaad();
 
-    let szog =
-        document.getElementById("szogmeret");
 
-    return szog.options[szog.selectedIndex].text;
+/* ===================================================== */
+/* AUTOMATIKUS ÚJRASZÁMOLÁS */
+/* ===================================================== */
 
-}
+document.getElementById("festekTipus")
+    .addEventListener("change", szamol);
+
+document.getElementById("kiadossag")
+    .addEventListener("input", szamol);
+
+document.getElementById("alapozo")
+    .addEventListener("change", szamol);
+
+document.getElementById("alapozoKiadossag")
+    .addEventListener("input", szamol);
+
+document.getElementById("munka")
+    .addEventListener("input", szamol);
+
+document.getElementById("egyeb")
+    .addEventListener("input", szamol);
+
+document.getElementById("haszon")
+    .addEventListener("input", szamol);
 
 
 </script>
