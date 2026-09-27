@@ -110,6 +110,26 @@ input {
     font-weight: bold;
 }
 
+.szal-info {
+    margin-top: 10px;
+    padding: 11px;
+    background: #e8e8e8;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.anyag-ar-info {
+    margin-top: 8px;
+    padding: 10px;
+    background: #eeeeee;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #555555;
+}
+
 .eredmeny-doboz {
     margin-top: 15px;
     padding: 14px;
@@ -248,6 +268,7 @@ input {
 <span id="szuksegesFestek">0.00</span> liter
 </div>
 
+
 <div class="felulet">
 🪣 Kikeverendő fedőfesték:
 <span id="festekMennyiseg">0.00</span> liter
@@ -363,6 +384,16 @@ input {
 <div class="sor">
 <span>Szögvas:</span>
 <strong id="szoganyag">0 Ft</strong>
+</div>
+
+<div class="sor">
+<span>Négyzetacél:</span>
+<strong id="negyzetanyag">0 Ft</strong>
+</div>
+
+<div class="sor">
+<span>Köracél:</span>
+<strong id="koranyag">0 Ft</strong>
 </div>
 
 <div class="sor">
@@ -516,6 +547,40 @@ const szogAdatok = [
 
 
 /* ===================================================== */
+/* NÉGYZETACÉL */
+/* ===================================================== */
+
+const negyzetAdatok = [
+
+    ["6×6", 1050, 0.006],
+    ["8×8", 1945, 0.008],
+    ["10×10", 2770, 0.010],
+    ["12×12", 3830, 0.012],
+    ["14×14", 5750, 0.014],
+    ["16×16", 7388, 0.016],
+    ["20×20", 11600, 0.020]
+
+];
+
+
+/* ===================================================== */
+/* KÖRACÉL */
+/* ===================================================== */
+
+const korAdatok = [
+
+    ["5,5 mm", 565, 0.0055],
+    ["8 mm", 1500, 0.008],
+    ["10 mm", 2075, 0.010],
+    ["12 mm", 3000, 0.012],
+    ["14 mm", 4190, 0.014],
+    ["16 mm", 5335, 0.016],
+    ["18 mm", 7570, 0.018]
+
+];
+
+
+/* ===================================================== */
 /* ANYAG HOZZÁADÁSA */
 /* ===================================================== */
 
@@ -555,7 +620,9 @@ function anyagHozzaad() {
     sor.appendChild(fejlec);
 
 
-    /* Anyagtípus */
+    /* ================================================= */
+    /* ANYAGTÍPUS */
+    /* ================================================= */
 
     let tipusLabel =
         document.createElement("label");
@@ -575,13 +642,17 @@ function anyagHozzaad() {
     tipus.innerHTML =
         "<option value='zar'>🔩 Zártszelvény</option>" +
         "<option value='lapos'>📏 Laposacél</option>" +
-        "<option value='szog'>📐 Szögvas</option>";
+        "<option value='szog'>📐 Szögvas</option>" +
+        "<option value='negyzet'>⬛ Négyzetacél</option>" +
+        "<option value='kor'>⚙️ Köracél</option>";
 
 
     sor.appendChild(tipus);
 
 
-    /* Méret */
+    /* ================================================= */
+    /* MÉRET */
+    /* ================================================= */
 
     let meretLabel =
         document.createElement("label");
@@ -600,41 +671,87 @@ function anyagHozzaad() {
     sor.appendChild(meret);
 
 
-    /* Mennyiség */
+    /* ================================================= */
+    /* FELHASZNÁLT HOSSZ */
+    /* ================================================= */
 
-    let darabLabel =
+    let hosszLabel =
         document.createElement("label");
 
-    darabLabel.innerHTML =
-        "Szálak száma:";
+    hosszLabel.innerHTML =
+        "Felhasznált hossz (m):";
 
-    sor.appendChild(darabLabel);
+    sor.appendChild(hosszLabel);
 
 
-    let darab =
+    let hossz =
         document.createElement("input");
 
-    darab.type = "number";
-    darab.className = "anyag-darab";
-    darab.value = "1";
-    darab.min = "0";
+    hossz.type = "number";
+    hossz.className = "anyag-hossz";
+    hossz.value = "0";
+    hossz.min = "0";
+    hossz.step = "0.01";
+    hossz.inputMode = "decimal";
 
-    sor.appendChild(darab);
+    sor.appendChild(hossz);
 
 
-    /* Sor létrehozása */
+    /* ================================================= */
+    /* SZÁL INFORMÁCIÓ */
+    /* ================================================= */
+
+    let szalInfo =
+        document.createElement("div");
+
+    szalInfo.className = "szal-info";
+
+    szalInfo.innerHTML =
+        "🔩 Szükséges 6 m-es szál: " +
+        "<span class='szal-darab'>0</span> db";
+
+    sor.appendChild(szalInfo);
+
+
+    /* ================================================= */
+    /* ANYAGÁR INFORMÁCIÓ */
+    /* ================================================= */
+
+    let arInfo =
+        document.createElement("div");
+
+    arInfo.className = "anyag-ar-info";
+
+    arInfo.innerHTML =
+        "💰 Anyagköltség: " +
+        "<span class='sor-anyag-ar'>0</span> Ft";
+
+    sor.appendChild(arInfo);
+
+
+    /* ================================================= */
+    /* SOR HOZZÁADÁSA */
+    /* ================================================= */
 
     lista.appendChild(sor);
 
 
-    /* Méretek feltöltése */
+    /* ================================================= */
+    /* MÉRETEK FELTÖLTÉSE */
+    /* ================================================= */
 
     meretekFrissit(tipus, meret);
 
 
+    /* ================================================= */
+    /* ESEMÉNYEK */
+    /* ================================================= */
+
     tipus.onchange = function() {
 
         meretekFrissit(tipus, meret);
+
+        szalFrissit(sor);
 
         szamol();
 
@@ -643,17 +760,23 @@ function anyagHozzaad() {
 
     meret.onchange = function() {
 
-        szamol();
-
-    };
-
-
-    darab.oninput = function() {
+        szalFrissit(sor);
 
         szamol();
 
     };
 
+
+    hossz.oninput = function() {
+
+        szalFrissit(sor);
+
+        szamol();
+
+    };
+
+
+    szalFrissit(sor);
 
     szamol();
 
@@ -684,9 +807,21 @@ function meretekFrissit(tipus, meret) {
 
     }
 
-    else {
+    else if (tipus.value === "szog") {
 
         adatok = szogAdatok;
+
+    }
+
+    else if (tipus.value === "negyzet") {
+
+        adatok = negyzetAdatok;
+
+    }
+
+    else {
+
+        adatok = korAdatok;
 
     }
 
@@ -713,6 +848,52 @@ function meretekFrissit(tipus, meret) {
 
 
 /* ===================================================== */
+/* 6 MÉTERES SZÁL SZÁMÍTÁSA */
+/* ===================================================== */
+
+function szalFrissit(sor) {
+
+    let hossz =
+        Number(
+            sor.querySelector(".anyag-hossz").value
+        );
+
+
+    let szalDarab = 0;
+
+
+    if (hossz > 0) {
+
+        szalDarab =
+            Math.ceil(hossz / 6);
+
+    }
+
+
+    sor.querySelector(".szal-darab").innerHTML =
+        szalDarab;
+
+
+    let meret =
+        sor.querySelector(".anyag-meret");
+
+    let ar =
+        meret.options.length > 0
+            ? Number(meret.options[meret.selectedIndex].value)
+            : 0;
+
+
+    let anyagAr =
+        szalDarab * ar;
+
+
+    sor.querySelector(".sor-anyag-ar").innerHTML =
+        anyagAr.toFixed(0);
+
+}
+
+
+/* ===================================================== */
 /* ANYAG SOROK KISZÁMÍTÁSA */
 /* ===================================================== */
 
@@ -725,6 +906,8 @@ function anyagSzamolas() {
     let zarAnyag = 0;
     let laposAnyag = 0;
     let szogAnyag = 0;
+    let negyzetAnyag = 0;
+    let korAnyag = 0;
 
     let osszesFelület = 0;
 
@@ -734,16 +917,18 @@ function anyagSzamolas() {
         let tipus =
             sor.querySelector(".anyag-tipus").value;
 
+
         let meret =
             sor.querySelector(".anyag-meret");
 
-        let darab =
+
+        let hossz =
             Number(
-                sor.querySelector(".anyag-darab").value
+                sor.querySelector(".anyag-hossz").value
             );
 
 
-        if (darab <= 0) {
+        if (hossz <= 0) {
 
             return;
 
@@ -761,25 +946,39 @@ function anyagSzamolas() {
         }
 
 
+        let szalDarab =
+            Math.ceil(hossz / 6);
+
+
         let adat;
 
 
+        /* ================================================= */
+        /* ZÁRTSZELVÉNY */
+        /* ================================================= */
+
         if (tipus === "zar") {
 
-            adat = zarAdatok[index];
+            adat =
+                zarAdatok[index];
 
-            let szelesseg = adat[2];
-            let magassag = adat[3];
+
+            let szelesseg =
+                adat[2];
+
+            let magassag =
+                adat[3];
+
 
             zarAnyag +=
-                adat[1] * darab;
+                adat[1] *
+                szalDarab;
 
 
             let felulet =
                 2 *
                 (szelesseg + magassag) *
-                6 *
-                darab;
+                hossz;
 
 
             osszesFelület +=
@@ -788,22 +987,32 @@ function anyagSzamolas() {
         }
 
 
+        /* ================================================= */
+        /* LAPOSACÉL */
+        /* ================================================= */
+
         else if (tipus === "lapos") {
 
-            adat = laposAdatok[index];
+            adat =
+                laposAdatok[index];
 
-            let szelesseg = adat[2];
-            let vastagsag = adat[3];
+
+            let szelesseg =
+                adat[2];
+
+            let vastagsag =
+                adat[3];
+
 
             laposAnyag +=
-                adat[1] * darab;
+                adat[1] *
+                szalDarab;
 
 
             let felulet =
                 2 *
                 (szelesseg + vastagsag) *
-                6 *
-                darab;
+                hossz;
 
 
             osszesFelület +=
@@ -812,23 +1021,109 @@ function anyagSzamolas() {
         }
 
 
+        /* ================================================= */
+        /* SZÖGVAS */
+        /* ================================================= */
+
         else if (tipus === "szog") {
 
-            adat = szogAdatok[index];
+            adat =
+                szogAdatok[index];
 
-            let a = adat[2];
-            let b = adat[3];
-            let vastagsag = adat[4];
+
+            let a =
+                adat[2];
+
+            let b =
+                adat[3];
+
+            let vastagsag =
+                adat[4];
+
 
             szogAnyag +=
-                adat[1] * darab;
+                adat[1] *
+                szalDarab;
 
 
             let felulet =
                 2 *
                 (a + b - vastagsag) *
-                6 *
-                darab;
+                hossz;
+
+
+            osszesFelület +=
+                felulet;
+
+        }
+
+
+        /* ================================================= */
+        /* NÉGYZETACÉL */
+        /* ================================================= */
+
+        else if (tipus === "negyzet") {
+
+            adat =
+                negyzetAdatok[index];
+
+
+            let oldal =
+                adat[2];
+
+
+            negyzetAnyag +=
+                adat[1] *
+                szalDarab;
+
+
+            /*
+               Négyzetacél festendő felülete:
+               kerület × hossz
+               = 4 × oldal × hossz
+            */
+
+            let felulet =
+                4 *
+                oldal *
+                hossz;
+
+
+            osszesFelület +=
+                felulet;
+
+        }
+
+
+        /* ================================================= */
+        /* KÖRACÉL */
+        /* ================================================= */
+
+        else if (tipus === "kor") {
+
+            adat =
+                korAdatok[index];
+
+
+            let atmero =
+                adat[2];
+
+
+            korAnyag +=
+                adat[1] *
+                szalDarab;
+
+
+            /*
+               Köracél festendő felülete:
+               kör kerülete × hossz
+               = π × átmérő × hossz
+            */
+
+            let felulet =
+                Math.PI *
+                atmero *
+                hossz;
 
 
             osszesFelület +=
@@ -841,16 +1136,27 @@ function anyagSzamolas() {
 
     return {
 
-        zarAnyag: zarAnyag,
+        zarAnyag:
+            zarAnyag,
 
-        laposAnyag: laposAnyag,
+        laposAnyag:
+            laposAnyag,
 
-        szogAnyag: szogAnyag,
+        szogAnyag:
+            szogAnyag,
+
+        negyzetAnyag:
+            negyzetAnyag,
+
+        korAnyag:
+            korAnyag,
 
         anyagkoltseg:
             zarAnyag +
             laposAnyag +
-            szogAnyag,
+            szogAnyag +
+            negyzetAnyag +
+            korAnyag,
 
         felulet:
             osszesFelület
@@ -908,7 +1214,8 @@ function szamol() {
     ) {
 
         szuksegesFestek =
-            felulet / kiadossag;
+            felulet /
+            kiadossag;
 
 
         /*
@@ -928,8 +1235,11 @@ function szamol() {
             festekAr;
 
     }
+
+
     document.getElementById("szuksegesFestek").innerHTML =
         szuksegesFestek.toFixed(2);
+
 
     document.getElementById("festekMennyiseg").innerHTML =
         kikeverendoFestek.toFixed(2);
@@ -1070,6 +1380,16 @@ function szamol() {
         " Ft";
 
 
+    document.getElementById("negyzetanyag").innerHTML =
+        anyag.negyzetAnyag.toFixed(0) +
+        " Ft";
+
+
+    document.getElementById("koranyag").innerHTML =
+        anyag.korAnyag.toFixed(0) +
+        " Ft";
+
+
     document.getElementById("anyag").innerHTML =
         anyag.anyagkoltseg.toFixed(0) +
         " Ft";
@@ -1111,20 +1431,26 @@ anyagHozzaad();
 document.getElementById("festekTipus")
     .addEventListener("change", szamol);
 
+
 document.getElementById("kiadossag")
     .addEventListener("input", szamol);
+
 
 document.getElementById("alapozo")
     .addEventListener("change", szamol);
 
+
 document.getElementById("alapozoKiadossag")
     .addEventListener("input", szamol);
+
 
 document.getElementById("munka")
     .addEventListener("input", szamol);
 
+
 document.getElementById("egyeb")
     .addEventListener("input", szamol);
+
 
 document.getElementById("haszon")
     .addEventListener("input", szamol);
