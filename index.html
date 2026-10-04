@@ -72,6 +72,90 @@ input {
     font-size: 17px;
 }
 
+/* ========================= */
+/* PROJEKT */
+/* ========================= */
+
+.projekt-doboz {
+    margin-top: 10px;
+    padding: 15px;
+    background: #f5f5f5;
+    border: 1px solid #dddddd;
+    border-radius: 15px;
+}
+
+.projekt-gombok {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.projekt-gomb {
+    width: 100%;
+    padding: 13px 8px;
+    border: none;
+    border-radius: 12px;
+    background: #222222;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.projekt-gomb:active {
+    transform: scale(0.98);
+}
+
+.projekt-gomb.zold {
+    background: #333333;
+}
+
+.projekt-gomb.piros {
+    background: #777777;
+}
+
+.mentett-projektek {
+    margin-top: 15px;
+}
+
+.projekt-elem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 11px;
+    margin-top: 8px;
+    background: white;
+    border: 1px solid #dddddd;
+    border-radius: 11px;
+}
+
+.projekt-nev {
+    flex: 1;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.projekt-elem-gomb {
+    border: none;
+    border-radius: 8px;
+    padding: 8px 10px;
+    background: #eeeeee;
+    font-size: 16px;
+}
+
+.projekt-ures {
+    text-align: center;
+    color: #777777;
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* ========================= */
+/* ANYAG */
+/* ========================= */
+
 .anyag-sor {
     margin-top: 18px;
     padding: 15px;
@@ -210,6 +294,51 @@ input {
 
 <div class="felirat">
 ÁRKALKULÁTOR
+</div>
+
+
+<!-- ========================= -->
+<!-- PROJEKT -->
+<!-- ========================= -->
+
+<h2>📁 Projekt</h2>
+
+<div class="projekt-doboz">
+
+<label>Projekt neve:</label>
+
+<input
+    type="text"
+    id="projektNev"
+    placeholder="Pl. Kovács János – kerti ülő"
+>
+
+
+<div class="projekt-gombok">
+
+<button
+    type="button"
+    class="projekt-gomb zold"
+    onclick="projektMentese()"
+>
+💾 MENTÉS
+</button>
+
+<button
+    type="button"
+    class="projekt-gomb"
+    onclick="ujProjekt()"
+>
+🆕 ÚJ PROJEKT
+</button>
+
+</div>
+
+
+<div id="mentettProjektek"
+     class="mentett-projektek">
+</div>
+
 </div>
 
 
@@ -584,7 +713,11 @@ const korAdatok = [
 /* ANYAG HOZZÁADÁSA */
 /* ===================================================== */
 
-function anyagHozzaad() {
+function anyagHozzaad(
+    mentettTipus = null,
+    mentettMeret = null,
+    mentettHossz = null
+) {
 
     let lista =
         document.getElementById("anyaglista");
@@ -620,9 +753,7 @@ function anyagHozzaad() {
     sor.appendChild(fejlec);
 
 
-    /* ================================================= */
     /* ANYAGTÍPUS */
-    /* ================================================= */
 
     let tipusLabel =
         document.createElement("label");
@@ -650,9 +781,7 @@ function anyagHozzaad() {
     sor.appendChild(tipus);
 
 
-    /* ================================================= */
     /* MÉRET */
-    /* ================================================= */
 
     let meretLabel =
         document.createElement("label");
@@ -671,9 +800,7 @@ function anyagHozzaad() {
     sor.appendChild(meret);
 
 
-    /* ================================================= */
     /* FELHASZNÁLT HOSSZ */
-    /* ================================================= */
 
     let hosszLabel =
         document.createElement("label");
@@ -689,7 +816,11 @@ function anyagHozzaad() {
 
     hossz.type = "number";
     hossz.className = "anyag-hossz";
-    hossz.value = "0";
+    hossz.value =
+        mentettHossz !== null
+            ? mentettHossz
+            : "0";
+
     hossz.min = "0";
     hossz.step = "0.01";
     hossz.inputMode = "decimal";
@@ -697,9 +828,7 @@ function anyagHozzaad() {
     sor.appendChild(hossz);
 
 
-    /* ================================================= */
     /* SZÁL INFORMÁCIÓ */
-    /* ================================================= */
 
     let szalInfo =
         document.createElement("div");
@@ -713,9 +842,7 @@ function anyagHozzaad() {
     sor.appendChild(szalInfo);
 
 
-    /* ================================================= */
-    /* ANYAGÁR INFORMÁCIÓ */
-    /* ================================================= */
+    /* ANYAGÁR */
 
     let arInfo =
         document.createElement("div");
@@ -729,27 +856,41 @@ function anyagHozzaad() {
     sor.appendChild(arInfo);
 
 
-    /* ================================================= */
-    /* SOR HOZZÁADÁSA */
-    /* ================================================= */
-
     lista.appendChild(sor);
 
 
-    /* ================================================= */
-    /* MÉRETEK FELTÖLTÉSE */
-    /* ================================================= */
+    /* MÉRETEK */
 
-    meretekFrissit(tipus, meret);
+    if (mentettTipus) {
+
+        tipus.value =
+            mentettTipus;
+
+    }
 
 
-    /* ================================================= */
+    meretekFrissit(
+        tipus,
+        meret
+    );
+
+
+    if (mentettMeret !== null) {
+
+        meret.value =
+            mentettMeret;
+
+    }
+
+
     /* ESEMÉNYEK */
-    /* ================================================= */
 
     tipus.onchange = function() {
 
-        meretekFrissit(tipus, meret);
+        meretekFrissit(
+            tipus,
+            meret
+        );
 
         szalFrissit(sor);
 
@@ -784,7 +925,7 @@ function anyagHozzaad() {
 
 
 /* ===================================================== */
-/* MÉRET LISTA FRISSÍTÉSE */
+/* MÉRET LISTA */
 /* ===================================================== */
 
 function meretekFrissit(tipus, meret) {
@@ -879,7 +1020,11 @@ function szalFrissit(sor) {
 
     let ar =
         meret.options.length > 0
-            ? Number(meret.options[meret.selectedIndex].value)
+            ? Number(
+                meret.options[
+                    meret.selectedIndex
+                ].value
+              )
             : 0;
 
 
@@ -894,7 +1039,7 @@ function szalFrissit(sor) {
 
 
 /* ===================================================== */
-/* ANYAG SOROK KISZÁMÍTÁSA */
+/* ANYAG SZÁMOLÁS */
 /* ===================================================== */
 
 function anyagSzamolas() {
@@ -915,16 +1060,22 @@ function anyagSzamolas() {
     sorok.forEach(function(sor) {
 
         let tipus =
-            sor.querySelector(".anyag-tipus").value;
+            sor.querySelector(
+                ".anyag-tipus"
+            ).value;
 
 
         let meret =
-            sor.querySelector(".anyag-meret");
+            sor.querySelector(
+                ".anyag-meret"
+            );
 
 
         let hossz =
             Number(
-                sor.querySelector(".anyag-hossz").value
+                sor.querySelector(
+                    ".anyag-hossz"
+                ).value
             );
 
 
@@ -947,15 +1098,15 @@ function anyagSzamolas() {
 
 
         let szalDarab =
-            Math.ceil(hossz / 6);
+            Math.ceil(
+                hossz / 6
+            );
 
 
         let adat;
 
 
-        /* ================================================= */
         /* ZÁRTSZELVÉNY */
-        /* ================================================= */
 
         if (tipus === "zar") {
 
@@ -987,9 +1138,7 @@ function anyagSzamolas() {
         }
 
 
-        /* ================================================= */
         /* LAPOSACÉL */
-        /* ================================================= */
 
         else if (tipus === "lapos") {
 
@@ -1021,9 +1170,7 @@ function anyagSzamolas() {
         }
 
 
-        /* ================================================= */
         /* SZÖGVAS */
-        /* ================================================= */
 
         else if (tipus === "szog") {
 
@@ -1058,9 +1205,7 @@ function anyagSzamolas() {
         }
 
 
-        /* ================================================= */
         /* NÉGYZETACÉL */
-        /* ================================================= */
 
         else if (tipus === "negyzet") {
 
@@ -1077,12 +1222,6 @@ function anyagSzamolas() {
                 szalDarab;
 
 
-            /*
-               Négyzetacél festendő felülete:
-               kerület × hossz
-               = 4 × oldal × hossz
-            */
-
             let felulet =
                 4 *
                 oldal *
@@ -1095,9 +1234,7 @@ function anyagSzamolas() {
         }
 
 
-        /* ================================================= */
         /* KÖRACÉL */
-        /* ================================================= */
 
         else if (tipus === "kor") {
 
@@ -1113,12 +1250,6 @@ function anyagSzamolas() {
                 adat[1] *
                 szalDarab;
 
-
-            /*
-               Köracél festendő felülete:
-               kör kerülete × hossz
-               = π × átmérő × hossz
-            */
 
             let felulet =
                 Math.PI *
@@ -1172,7 +1303,6 @@ function anyagSzamolas() {
 
 function szamol() {
 
-
     let anyag =
         anyagSzamolas();
 
@@ -1185,26 +1315,26 @@ function szamol() {
         felulet.toFixed(2);
 
 
-    /* ================================================= */
     /* FESTÉK */
-    /* ================================================= */
 
     let festekAr =
         Number(
-            document.getElementById("festekTipus").value
+            document.getElementById(
+                "festekTipus"
+            ).value
         );
 
 
     let kiadossag =
         Number(
-            document.getElementById("kiadossag").value
+            document.getElementById(
+                "kiadossag"
+            ).value
         );
 
 
     let szuksegesFestek = 0;
-
     let kikeverendoFestek = 0;
-
     let festekKoltseg = 0;
 
 
@@ -1218,15 +1348,10 @@ function szamol() {
             kiadossag;
 
 
-        /*
-           Mindig a következő
-           0,5 literes lépcsőre
-           kerekítünk FELFELÉ.
-        */
-
         kikeverendoFestek =
             Math.ceil(
-                szuksegesFestek / 0.5
+                szuksegesFestek /
+                0.5
             ) * 0.5;
 
 
@@ -1237,36 +1362,43 @@ function szamol() {
     }
 
 
-    document.getElementById("szuksegesFestek").innerHTML =
+    document.getElementById(
+        "szuksegesFestek"
+    ).innerHTML =
         szuksegesFestek.toFixed(2);
 
 
-    document.getElementById("festekMennyiseg").innerHTML =
+    document.getElementById(
+        "festekMennyiseg"
+    ).innerHTML =
         kikeverendoFestek.toFixed(2);
 
 
-    document.getElementById("festekKoltseg").innerHTML =
+    document.getElementById(
+        "festekKoltseg"
+    ).innerHTML =
         festekKoltseg.toFixed(0);
 
 
-    /* ================================================= */
     /* ALAPOZÓ */
-    /* ================================================= */
 
     let alapozo =
         Number(
-            document.getElementById("alapozo").value
+            document.getElementById(
+                "alapozo"
+            ).value
         );
 
 
     let alapozoKiadossag =
         Number(
-            document.getElementById("alapozoKiadossag").value
+            document.getElementById(
+                "alapozoKiadossag"
+            ).value
         );
 
 
     let alapozoMennyiseg = 0;
-
     let alapozoKoltseg = 0;
 
 
@@ -1288,52 +1420,58 @@ function szamol() {
     }
 
 
-    document.getElementById("alapozoMennyiseg").innerHTML =
+    document.getElementById(
+        "alapozoMennyiseg"
+    ).innerHTML =
         alapozoMennyiseg.toFixed(2);
 
 
-    document.getElementById("alapozoKoltseg").innerHTML =
+    document.getElementById(
+        "alapozoKoltseg"
+    ).innerHTML =
         alapozoKoltseg.toFixed(0);
 
 
-    /* ================================================= */
     /* TELJES FESTÉKANYAG */
-    /* ================================================= */
 
     let festekOsszesen =
         festekKoltseg +
         alapozoKoltseg;
 
 
-    document.getElementById("festekOsszesen").innerHTML =
+    document.getElementById(
+        "festekOsszesen"
+    ).innerHTML =
         festekOsszesen.toFixed(0);
 
 
-    /* ================================================= */
     /* KÖLTSÉGEK */
-    /* ================================================= */
 
     let munka =
         Number(
-            document.getElementById("munka").value
+            document.getElementById(
+                "munka"
+            ).value
         );
 
 
     let egyeb =
         Number(
-            document.getElementById("egyeb").value
+            document.getElementById(
+                "egyeb"
+            ).value
         );
 
 
     let haszon =
         Number(
-            document.getElementById("haszon").value
+            document.getElementById(
+                "haszon"
+            ).value
         );
 
 
-    /* ================================================= */
     /* ÖNKÖLTSÉG */
-    /* ================================================= */
 
     let koltseg =
         anyag.anyagkoltseg +
@@ -1342,9 +1480,7 @@ function szamol() {
         egyeb;
 
 
-    /* ================================================= */
     /* HASZON */
-    /* ================================================= */
 
     let haszonAr =
         koltseg *
@@ -1352,67 +1488,649 @@ function szamol() {
         100;
 
 
-    /* ================================================= */
     /* VÉGSŐ ÁR */
-    /* ================================================= */
 
     let vegso =
         koltseg +
         haszonAr;
 
 
-    /* ================================================= */
     /* EREDMÉNY */
-    /* ================================================= */
 
-    document.getElementById("zaranyag").innerHTML =
+    document.getElementById(
+        "zaranyag"
+    ).innerHTML =
         anyag.zarAnyag.toFixed(0) +
         " Ft";
 
 
-    document.getElementById("laposanyag").innerHTML =
+    document.getElementById(
+        "laposanyag"
+    ).innerHTML =
         anyag.laposAnyag.toFixed(0) +
         " Ft";
 
 
-    document.getElementById("szoganyag").innerHTML =
+    document.getElementById(
+        "szoganyag"
+    ).innerHTML =
         anyag.szogAnyag.toFixed(0) +
         " Ft";
 
 
-    document.getElementById("negyzetanyag").innerHTML =
+    document.getElementById(
+        "negyzetanyag"
+    ).innerHTML =
         anyag.negyzetAnyag.toFixed(0) +
         " Ft";
 
 
-    document.getElementById("koranyag").innerHTML =
+    document.getElementById(
+        "koranyag"
+    ).innerHTML =
         anyag.korAnyag.toFixed(0) +
         " Ft";
 
 
-    document.getElementById("anyag").innerHTML =
+    document.getElementById(
+        "anyag"
+    ).innerHTML =
         anyag.anyagkoltseg.toFixed(0) +
         " Ft";
 
 
-    document.getElementById("festekEredmeny").innerHTML =
+    document.getElementById(
+        "festekEredmeny"
+    ).innerHTML =
         festekOsszesen.toFixed(0) +
         " Ft";
 
 
-    document.getElementById("koltseg").innerHTML =
+    document.getElementById(
+        "koltseg"
+    ).innerHTML =
         koltseg.toFixed(0) +
         " Ft";
 
 
-    document.getElementById("haszonAr").innerHTML =
+    document.getElementById(
+        "haszonAr"
+    ).innerHTML =
         haszonAr.toFixed(0) +
         " Ft";
 
 
-    document.getElementById("vegso").innerHTML =
+    document.getElementById(
+        "vegso"
+    ).innerHTML =
         vegso.toFixed(0) +
         " Ft";
+
+}
+
+
+/* ===================================================== */
+/* PROJEKT ADATAINAK ÖSSZEGYŰJTÉSE */
+/* ===================================================== */
+
+function projektAdatok() {
+
+    let anyagok = [];
+
+    let sorok =
+        document.querySelectorAll(
+            ".anyag-sor"
+        );
+
+
+    sorok.forEach(function(sor) {
+
+        anyagok.push({
+
+            tipus:
+                sor.querySelector(
+                    ".anyag-tipus"
+                ).value,
+
+            meret:
+                sor.querySelector(
+                    ".anyag-meret"
+                ).selectedIndex,
+
+            hossz:
+                sor.querySelector(
+                    ".anyag-hossz"
+                ).value
+
+        });
+
+    });
+
+
+    return {
+
+        anyagok: anyagok,
+
+        festekTipus:
+            document.getElementById(
+                "festekTipus"
+            ).value,
+
+        kiadossag:
+            document.getElementById(
+                "kiadossag"
+            ).value,
+
+        alapozo:
+            document.getElementById(
+                "alapozo"
+            ).value,
+
+        alapozoKiadossag:
+            document.getElementById(
+                "alapozoKiadossag"
+            ).value,
+
+        munka:
+            document.getElementById(
+                "munka"
+            ).value,
+
+        egyeb:
+            document.getElementById(
+                "egyeb"
+            ).value,
+
+        haszon:
+            document.getElementById(
+                "haszon"
+            ).value
+
+    };
+
+}
+
+
+/* ===================================================== */
+/* PROJEKT MENTÉSE */
+/* ===================================================== */
+
+function projektMentese() {
+
+    let nev =
+        document.getElementById(
+            "projektNev"
+        ).value.trim();
+
+
+    if (!nev) {
+
+        alert(
+            "Írd be a projekt nevét!"
+        );
+
+        return;
+
+    }
+
+
+    let projektek =
+        JSON.parse(
+            localStorage.getItem(
+                "tarOlProjektek"
+            ) || "{}"
+        );
+
+
+    projektek[nev] =
+        projektAdatok();
+
+
+    localStorage.setItem(
+        "tarOlProjektek",
+        JSON.stringify(projektek)
+    );
+
+
+    projektListaFrissit();
+
+
+    alert(
+        "✅ Projekt elmentve:\n" +
+        nev
+    );
+
+}
+
+
+/* ===================================================== */
+/* MENTETT PROJEKTEK LISTÁJA */
+/* ===================================================== */
+
+function projektListaFrissit() {
+
+    let doboz =
+        document.getElementById(
+            "mentettProjektek"
+        );
+
+
+    let projektek =
+        JSON.parse(
+            localStorage.getItem(
+                "tarOlProjektek"
+            ) || "{}"
+        );
+
+
+    let nevek =
+        Object.keys(projektek);
+
+
+    if (nevek.length === 0) {
+
+        doboz.innerHTML =
+            "<div class='projekt-ures'>" +
+            "Nincs még mentett projekt." +
+            "</div>";
+
+        return;
+
+    }
+
+
+    doboz.innerHTML =
+        "<label>📂 Mentett projektek:</label>";
+
+
+    nevek.forEach(function(nev) {
+
+        let elem =
+            document.createElement("div");
+
+        elem.className =
+            "projekt-elem";
+
+
+        let nevSpan =
+            document.createElement("span");
+
+        nevSpan.className =
+            "projekt-nev";
+
+        nevSpan.textContent =
+            nev;
+
+
+        let betolt =
+            document.createElement("button");
+
+        betolt.type =
+            "button";
+
+        betolt.className =
+            "projekt-elem-gomb";
+
+        betolt.innerHTML =
+            "📂";
+
+
+        betolt.title =
+            "Projekt betöltése";
+
+
+        betolt.onclick =
+            function() {
+
+                projektBetoltese(nev);
+
+            };
+
+
+        let torol =
+            document.createElement("button");
+
+        torol.type =
+            "button";
+
+        torol.className =
+            "projekt-elem-gomb";
+
+        torol.innerHTML =
+            "🗑️";
+
+
+        torol.title =
+            "Projekt törlése";
+
+
+        torol.onclick =
+            function() {
+
+                projektTorlese(nev);
+
+            };
+
+
+        elem.appendChild(
+            nevSpan
+        );
+
+        elem.appendChild(
+            betolt
+        );
+
+        elem.appendChild(
+            torol
+        );
+
+
+        doboz.appendChild(
+            elem
+        );
+
+    });
+
+}
+
+
+/* ===================================================== */
+/* PROJEKT BETÖLTÉSE */
+/* ===================================================== */
+
+function projektBetoltese(nev) {
+
+    let projektek =
+        JSON.parse(
+            localStorage.getItem(
+                "tarOlProjektek"
+            ) || "{}"
+        );
+
+
+    let projekt =
+        projektek[nev];
+
+
+    if (!projekt) {
+
+        alert(
+            "A projekt nem található."
+        );
+
+        return;
+
+    }
+
+
+    /* Projekt neve */
+
+    document.getElementById(
+        "projektNev"
+    ).value =
+        nev;
+
+
+    /* Anyaglista törlése */
+
+    document.getElementById(
+        "anyaglista"
+    ).innerHTML =
+        "";
+
+
+    /* Anyagok visszatöltése */
+
+    projekt.anyagok.forEach(
+        function(anyag) {
+
+            let tipus =
+                anyag.tipus;
+
+
+            let adatok;
+
+
+            if (tipus === "zar") {
+
+                adatok =
+                    zarAdatok;
+
+            }
+
+            else if (tipus === "lapos") {
+
+                adatok =
+                    laposAdatok;
+
+            }
+
+            else if (tipus === "szog") {
+
+                adatok =
+                    szogAdatok;
+
+            }
+
+            else if (tipus === "negyzet") {
+
+                adatok =
+                    negyzetAdatok;
+
+            }
+
+            else {
+
+                adatok =
+                    korAdatok;
+
+            }
+
+
+            let meretIndex =
+                Number(
+                    anyag.meret
+                );
+
+
+            if (
+                meretIndex < 0 ||
+                meretIndex >= adatok.length
+            ) {
+
+                meretIndex = 0;
+
+            }
+
+
+            anyagHozzaad(
+                tipus,
+                adatok[meretIndex][1],
+                anyag.hossz
+            );
+
+        }
+    );
+
+
+    /* Festék */
+
+    document.getElementById(
+        "festekTipus"
+    ).value =
+        projekt.festekTipus;
+
+
+    document.getElementById(
+        "kiadossag"
+    ).value =
+        projekt.kiadossag;
+
+
+    /* Alapozó */
+
+    document.getElementById(
+        "alapozo"
+    ).value =
+        projekt.alapozo;
+
+
+    document.getElementById(
+        "alapozoKiadossag"
+    ).value =
+        projekt.alapozoKiadossag;
+
+
+    /* Költségek */
+
+    document.getElementById(
+        "munka"
+    ).value =
+        projekt.munka;
+
+
+    document.getElementById(
+        "egyeb"
+    ).value =
+        projekt.egyeb;
+
+
+    document.getElementById(
+        "haszon"
+    ).value =
+        projekt.haszon;
+
+
+    szamol();
+
+
+    alert(
+        "📂 Projekt betöltve:\n" +
+        nev
+    );
+
+}
+
+
+/* ===================================================== */
+/* PROJEKT TÖRLÉSE */
+/* ===================================================== */
+
+function projektTorlese(nev) {
+
+    let biztos =
+        confirm(
+            "Biztosan törlöd ezt a projektet?\n\n" +
+            nev
+        );
+
+
+    if (!biztos) {
+
+        return;
+
+    }
+
+
+    let projektek =
+        JSON.parse(
+            localStorage.getItem(
+                "tarOlProjektek"
+            ) || "{}"
+        );
+
+
+    delete projektek[nev];
+
+
+    localStorage.setItem(
+        "tarOlProjektek",
+        JSON.stringify(projektek)
+    );
+
+
+    projektListaFrissit();
+
+}
+
+
+/* ===================================================== */
+/* ÚJ PROJEKT */
+/* ===================================================== */
+
+function ujProjekt() {
+
+    let biztos =
+        confirm(
+            "Új projekt indítása?\n\n" +
+            "A jelenlegi kalkuláció törlődik."
+        );
+
+
+    if (!biztos) {
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "projektNev"
+    ).value =
+        "";
+
+
+    document.getElementById(
+        "anyaglista"
+    ).innerHTML =
+        "";
+
+
+    document.getElementById(
+        "festekTipus"
+    ).value =
+        "6000";
+
+
+    document.getElementById(
+        "kiadossag"
+    ).value =
+        "8";
+
+
+    document.getElementById(
+        "alapozo"
+    ).value =
+        "0";
+
+
+    document.getElementById(
+        "alapozoKiadossag"
+    ).value =
+        "8";
+
+
+    document.getElementById(
+        "munka"
+    ).value =
+        "0";
+
+
+    document.getElementById(
+        "egyeb"
+    ).value =
+        "0";
+
+
+    document.getElementById(
+        "haszon"
+    ).value =
+        "30";
+
+
+    anyagHozzaad();
+
+    szamol();
 
 }
 
@@ -1425,35 +2143,77 @@ anyagHozzaad();
 
 
 /* ===================================================== */
+/* MENTETT PROJEKTEK BETÖLTÉSE */
+/* ===================================================== */
+
+projektListaFrissit();
+
+
+/* ===================================================== */
 /* AUTOMATIKUS ÚJRASZÁMOLÁS */
 /* ===================================================== */
 
-document.getElementById("festekTipus")
-    .addEventListener("change", szamol);
+document.getElementById(
+    "festekTipus"
+)
+.addEventListener(
+    "change",
+    szamol
+);
 
 
-document.getElementById("kiadossag")
-    .addEventListener("input", szamol);
+document.getElementById(
+    "kiadossag"
+)
+.addEventListener(
+    "input",
+    szamol
+);
 
 
-document.getElementById("alapozo")
-    .addEventListener("change", szamol);
+document.getElementById(
+    "alapozo"
+)
+.addEventListener(
+    "change",
+    szamol
+);
 
 
-document.getElementById("alapozoKiadossag")
-    .addEventListener("input", szamol);
+document.getElementById(
+    "alapozoKiadossag"
+)
+.addEventListener(
+    "input",
+    szamol
+);
 
 
-document.getElementById("munka")
-    .addEventListener("input", szamol);
+document.getElementById(
+    "munka"
+)
+.addEventListener(
+    "input",
+    szamol
+);
 
 
-document.getElementById("egyeb")
-    .addEventListener("input", szamol);
+document.getElementById(
+    "egyeb"
+)
+.addEventListener(
+    "input",
+    szamol
+);
 
 
-document.getElementById("haszon")
-    .addEventListener("input", szamol);
+document.getElementById(
+    "haszon"
+)
+.addEventListener(
+    "input",
+    szamol
+);
 
 
 </script>
