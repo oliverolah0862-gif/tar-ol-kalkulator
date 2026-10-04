@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-content="width=device-width, initial-scale=1">
+      content="width=device-width, initial-scale=1">
 
 <title>Tar-Ol Metal Árkalkulátor</title>
 
@@ -35,8 +35,7 @@ body {
 
 h1 {
     text-align: center;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin: 5px 0;
     font-size: 28px;
 }
 
@@ -104,14 +103,10 @@ textarea {
     padding: 13px 8px;
     border: none;
     border-radius: 12px;
-    background: #222222;
+    background: #222;
     color: white;
     font-size: 15px;
     font-weight: bold;
-}
-
-.projekt-gomb:active {
-    transform: scale(0.98);
 }
 
 .mentett-projektek {
@@ -120,13 +115,12 @@ textarea {
 
 .projekt-elem {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     gap: 8px;
     padding: 11px;
     margin-top: 8px;
     background: white;
-    border: 1px solid #dddddd;
+    border: 1px solid #ddd;
     border-radius: 11px;
 }
 
@@ -141,15 +135,14 @@ textarea {
     border: none;
     border-radius: 8px;
     padding: 8px 10px;
-    background: #eeeeee;
+    background: #eee;
     font-size: 16px;
 }
 
 .projekt-ures {
     text-align: center;
-    color: #777777;
+    color: #777;
     padding: 10px;
-    font-size: 14px;
 }
 
 
@@ -162,14 +155,13 @@ textarea {
     padding: 15px;
     background: #f5f5f5;
     border-radius: 15px;
-    border: 1px solid #dddddd;
+    border: 1px solid #ddd;
 }
 
 .anyag-fejlec {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
     margin-bottom: 10px;
     font-weight: bold;
     font-size: 18px;
@@ -177,7 +169,7 @@ textarea {
 
 .torles-gomb {
     border: none;
-    background: #dddddd;
+    background: #ddd;
     border-radius: 10px;
     padding: 8px 11px;
     font-size: 18px;
@@ -187,10 +179,9 @@ textarea {
     width: 100%;
     margin-top: 15px;
     padding: 15px;
-    border: 2px dashed #777777;
+    border: 2px dashed #777;
     border-radius: 13px;
     background: white;
-    color: #222222;
     font-size: 17px;
     font-weight: bold;
 }
@@ -202,17 +193,15 @@ textarea {
     border-radius: 10px;
     text-align: center;
     font-weight: bold;
-    font-size: 15px;
 }
 
 .anyag-ar-info {
     margin-top: 8px;
     padding: 10px;
-    background: #eeeeee;
+    background: #eee;
     border-radius: 10px;
     text-align: center;
-    font-size: 14px;
-    color: #555555;
+    color: #555;
 }
 
 
@@ -220,10 +209,11 @@ textarea {
 /* EREDMÉNY */
 /* ========================= */
 
-.eredmeny-doboz {
-    margin-top: 15px;
-    padding: 14px;
-    background: #eeeeee;
+.eredmeny-doboz,
+.felulet {
+    margin-top: 12px;
+    padding: 13px;
+    background: #eee;
     border-radius: 12px;
     text-align: center;
     font-weight: bold;
@@ -235,14 +225,10 @@ textarea {
     padding: 17px;
     border: none;
     border-radius: 13px;
-    background: #222222;
+    background: #222;
     color: white;
     font-size: 19px;
     font-weight: bold;
-}
-
-.gomb:active {
-    transform: scale(0.98);
 }
 
 .eredmeny {
@@ -257,7 +243,7 @@ textarea {
     justify-content: space-between;
     gap: 15px;
     padding: 8px 0;
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid #ddd;
 }
 
 .sor:last-child {
@@ -271,15 +257,6 @@ textarea {
     margin-top: 12px;
 }
 
-.felulet {
-    margin-top: 12px;
-    padding: 13px;
-    background: #eeeeee;
-    border-radius: 12px;
-    text-align: center;
-    font-weight: bold;
-}
-
 
 /* ========================= */
 /* ÁRAJÁNLAT */
@@ -289,7 +266,7 @@ textarea {
     margin-top: 10px;
     padding: 15px;
     background: #f5f5f5;
-    border: 1px solid #dddddd;
+    border: 1px solid #ddd;
     border-radius: 15px;
 }
 
@@ -308,24 +285,191 @@ textarea {
     padding: 17px;
     border: none;
     border-radius: 13px;
-    background: #222222;
+    background: #222;
     color: white;
     font-size: 18px;
     font-weight: bold;
 }
 
-.ajanlat-gomb:active {
-    transform: scale(0.98);
+
+/* ========================= */
+/* AJÁNLAT APP NÉZET */
+/* ========================= */
+
+.ajanlat-oldal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: white;
+    overflow-y: auto;
+    padding: 12px;
+}
+
+.ajanlat-fejlec-gombok {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    gap: 8px;
+    padding: 8px 0 12px;
+    background: white;
+}
+
+.ajanlat-fejlec-gombok button {
+    flex: 1;
+    border: none;
+    border-radius: 11px;
+    padding: 13px 8px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.be-zar-gomb {
+    background: #ddd;
+}
+
+.nyomtatas-gomb {
+    background: #222;
+    color: white;
+}
+
+.ajanlat-papir {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 15px;
+}
+
+.ajanlat-logo {
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.ajanlat-alcim {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+.ajanlat-vonal {
+    border-bottom: 3px solid #111;
+    margin-top: 12px;
+}
+
+.ajanlat-cim {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 24px 0;
+}
+
+.ajanlat-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.ajanlat-doboz {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.ajanlat-doboz-cim {
+    font-weight: bold;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 7px;
+}
+
+.ajanlat-doboz-tartalom {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.ajanlat-munka {
+    margin: 18px 0;
+    padding: 13px;
+    background: #f1f1f1;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.ajanlat-tablazat {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.ajanlat-tablazat th,
+.ajanlat-tablazat td {
+    border-bottom: 1px solid #ccc;
+    padding: 9px 5px;
+    font-size: 12px;
+    vertical-align: top;
+}
+
+.ajanlat-tablazat th {
+    background: #eee;
+    text-align: left;
+}
+
+.ajanlat-tablazat th:nth-child(2),
+.ajanlat-tablazat td:nth-child(2) {
+    text-align: center;
+}
+
+.ajanlat-tablazat th:last-child,
+.ajanlat-tablazat td:last-child {
+    text-align: right;
+}
+
+.ajanlat-vegosszeg {
+    margin-top: 20px;
+    padding: 15px;
+    background: #eee;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.ajanlat-megjegyzes {
+    margin-top: 28px;
+    padding-top: 14px;
+    border-top: 1px solid #ccc;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.ajanlat-alairasok {
+    margin-top: 55px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+.alairas {
+    border-top: 1px solid #111;
+    padding-top: 7px;
+    font-size: 12px;
+}
+
+.ajanlat-lablec {
+    margin-top: 30px;
+    text-align: center;
+    color: #777;
+    font-size: 10px;
 }
 
 
 /* ========================= */
 /* NYOMTATÁS */
 /* ========================= */
-
-.nyomtathato-ajanlat {
-    display: none;
-}
 
 @media print {
 
@@ -336,166 +480,50 @@ textarea {
     }
 
     .kalkulator {
-        display: none;
+        display: none !important;
     }
 
-    .nyomtathato-ajanlat {
+    .ajanlat-oldal {
+        position: static;
         display: block !important;
+        overflow: visible;
+        padding: 0;
     }
 
+    .ajanlat-fejlec-gombok {
+        display: none !important;
+    }
+
+    .ajanlat-papir {
+        max-width: none;
+        padding: 0;
+    }
+
+    @page {
+        size: A4;
+        margin: 12mm;
+    }
 }
 
 
 /* ========================= */
-/* AJÁNLAT NYOMTATÁSI NÉZET */
+/* KIS KÉPERNYŐ */
 /* ========================= */
 
-.print-oldal {
-    width: 100%;
-    max-width: 180mm;
-    margin: auto;
-    font-family: Arial, sans-serif;
-    color: #111;
-}
+@media (max-width: 480px) {
 
-.print-fejlec {
-    border-bottom: 3px solid #111;
-    padding-bottom: 12px;
-    margin-bottom: 22px;
-}
+    .ajanlat-info-grid {
+        grid-template-columns: 1fr;
+    }
 
-.print-logo {
-    font-size: 28px;
-    font-weight: bold;
-}
+    .ajanlat-vegosszeg {
+        font-size: 19px;
+    }
 
-.print-alcim {
-    margin-top: 5px;
-    font-size: 14px;
-    color: #555;
-}
+    .ajanlat-alairasok {
+        gap: 25px;
+    }
 
-.print-cim {
-    text-align: center;
-    font-size: 28px;
-    font-weight: bold;
-    margin: 22px 0;
-}
-
-.print-info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.print-doboz {
-    border: 1px solid #cccccc;
-    border-radius: 8px;
-    padding: 12px;
-}
-
-.print-doboz-cim {
-    font-weight: bold;
-    font-size: 13px;
-    color: #555;
-    margin-bottom: 7px;
-}
-
-.print-doboz-tartalom {
-    font-size: 15px;
-    line-height: 1.5;
-}
-
-.print-munka {
-    margin: 20px 0;
-    padding: 13px;
-    background: #f2f2f2;
-    border-radius: 8px;
-}
-
-.print-tablazat {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.print-tablazat th,
-.print-tablazat td {
-    border-bottom: 1px solid #cccccc;
-    padding: 9px 5px;
-    text-align: left;
-    font-size: 13px;
-}
-
-.print-tablazat th {
-    background: #eeeeee;
-}
-
-.print-tablazat th:last-child,
-.print-tablazat td:last-child {
-    text-align: right;
-}
-
-.print-tablazat .mennyiseg {
-    text-align: center;
-}
-
-.print-osszesito {
-    margin-top: 18px;
-    margin-left: auto;
-    width: 65%;
-}
-
-.print-osszesito-sor {
-    display: flex;
-    justify-content: space-between;
-    padding: 7px 0;
-    border-bottom: 1px solid #dddddd;
-}
-
-.print-vegosszeg {
-    margin-top: 12px;
-    padding: 14px;
-    background: #eeeeee;
-    border-radius: 8px;
-    font-size: 22px;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-}
-
-.print-feltetelek {
-    margin-top: 30px;
-    padding-top: 15px;
-    border-top: 1px solid #cccccc;
-    font-size: 13px;
-    line-height: 1.5;
-}
-
-.print-alairas {
-    margin-top: 55px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-}
-
-.print-alairas-doboz {
-    border-top: 1px solid #111;
-    padding-top: 7px;
-    font-size: 13px;
-}
-
-.print-lablec {
-    margin-top: 35px;
-    text-align: center;
-    font-size: 11px;
-    color: #777;
-}
-
-@page {
-    size: A4;
-    margin: 16mm;
 }
 
 </style>
@@ -505,6 +533,10 @@ textarea {
 
 <body>
 
+
+<!-- ===================================================== -->
+<!-- KALKULÁTOR -->
+<!-- ===================================================== -->
 
 <div class="kalkulator">
 
@@ -516,9 +548,7 @@ textarea {
 </div>
 
 
-<!-- ========================= -->
 <!-- PROJEKT -->
-<!-- ========================= -->
 
 <h2>📁 Projekt</h2>
 
@@ -531,7 +561,6 @@ type="text"
 id="projektNev"
 placeholder="Pl. Kovács János – kerti ülő"
 >
-
 
 <div class="projekt-gombok">
 
@@ -553,7 +582,6 @@ onclick="ujProjekt()"
 
 </div>
 
-
 <div
 id="mentettProjektek"
 class="mentett-projektek">
@@ -562,9 +590,7 @@ class="mentett-projektek">
 </div>
 
 
-<!-- ========================= -->
 <!-- ANYAGLISTA -->
-<!-- ========================= -->
 
 <h2>🔩 Anyaglista</h2>
 
@@ -579,15 +605,19 @@ onclick="anyagHozzaad()"
 </button>
 
 
-<!-- ========================= -->
 <!-- FESTÉS -->
-<!-- ========================= -->
 
 <h2>🎨 Festés</h2>
 
 <div class="felulet">
+
 🎨 Festendő felület:
-<span id="felulet">0.00</span> m²
+
+<span id="felulet">
+0.00
+</span>
+m²
+
 </div>
 
 
@@ -595,13 +625,20 @@ onclick="anyagHozzaad()"
 
 <select id="festekTipus">
 
-<option value="6000">1K festék – 6000 Ft/l</option>
-<option value="13000">2K festék – 13000 Ft/l</option>
+<option value="6000">
+1K festék – 6000 Ft/l
+</option>
+
+<option value="13000">
+2K festék – 13000 Ft/l
+</option>
 
 </select>
 
 
-<label>Fedőfesték kiadóssága (m²/l):</label>
+<label>
+Fedőfesték kiadóssága (m²/l):
+</label>
 
 <input
 type="number"
@@ -613,20 +650,38 @@ step="0.1"
 
 
 <div class="felulet">
+
 🧮 Tényleges festékszükséglet:
-<span id="szuksegesFestek">0.00</span> liter
+
+<span id="szuksegesFestek">
+0.00
+</span>
+liter
+
 </div>
 
 
 <div class="felulet">
+
 🪣 Kikeverendő fedőfesték:
-<span id="festekMennyiseg">0.00</span> liter
+
+<span id="festekMennyiseg">
+0.00
+</span>
+liter
+
 </div>
 
 
 <div class="felulet">
+
 💰 Fedőfesték költsége:
-<span id="festekKoltseg">0</span> Ft
+
+<span id="festekKoltseg">
+0
+</span>
+Ft
+
 </div>
 
 
@@ -634,13 +689,20 @@ step="0.1"
 
 <select id="alapozo">
 
-<option value="0">Nem</option>
-<option value="1">Igen</option>
+<option value="0">
+Nem
+</option>
+
+<option value="1">
+Igen
+</option>
 
 </select>
 
 
-<label>Alapozó kiadóssága (m²/l):</label>
+<label>
+Alapozó kiadóssága (m²/l):
+</label>
 
 <input
 type="number"
@@ -652,32 +714,48 @@ step="0.1"
 
 
 <div class="felulet">
+
 🪣 Szükséges alapozó:
-<span id="alapozoMennyiseg">0.00</span> liter
+
+<span id="alapozoMennyiseg">
+0.00
+</span>
+liter
+
 </div>
 
 
 <div class="felulet">
+
 💰 Alapozó költsége:
-<span id="alapozoKoltseg">0</span> Ft
+
+<span id="alapozoKoltseg">
+0
+</span>
+Ft
+
 </div>
 
 
 <div class="eredmeny-doboz">
 
 🎨 Teljes festékanyag-költség:
-<span id="festekOsszesen">0</span> Ft
+
+<span id="festekOsszesen">
+0
+</span>
+Ft
 
 </div>
 
 
-<!-- ========================= -->
 <!-- KÖLTSÉGEK -->
-<!-- ========================= -->
 
 <h2>💰 Költségek</h2>
 
-<label>Munkadíj (Ft):</label>
+<label>
+Munkadíj (Ft):
+</label>
 
 <input
 type="number"
@@ -687,7 +765,9 @@ min="0"
 >
 
 
-<label>Egyéb költség (Ft):</label>
+<label>
+Egyéb költség (Ft):
+</label>
 
 <input
 type="number"
@@ -697,7 +777,9 @@ min="0"
 >
 
 
-<label>Haszonkulcs (%):</label>
+<label>
+Haszonkulcs (%):
+</label>
 
 <input
 type="number"
@@ -716,9 +798,7 @@ onclick="szamol()"
 </button>
 
 
-<!-- ========================= -->
 <!-- EREDMÉNY -->
-<!-- ========================= -->
 
 <div class="eredmeny">
 
@@ -782,14 +862,13 @@ Végső eladási ár
 </div>
 
 
-<!-- ========================= -->
-<!-- ÁRAJÁNLAT -->
-<!-- ========================= -->
+<!-- ===================================================== -->
+<!-- ÁRAJÁNLAT ADATOK -->
+<!-- ===================================================== -->
 
 <h2>📄 Árajánlat</h2>
 
 <div class="ajanlat-doboz">
-
 
 <div class="ajanlat-info">
 
@@ -802,7 +881,9 @@ TOM-2026-0001
 </div>
 
 
-<label>👤 Ügyfél neve:</label>
+<label>
+👤 Ügyfél neve:
+</label>
 
 <input
 type="text"
@@ -811,7 +892,9 @@ placeholder="Pl. Kovács János"
 >
 
 
-<label>📍 Ügyfél címe:</label>
+<label>
+📍 Ügyfél címe:
+</label>
 
 <input
 type="text"
@@ -820,7 +903,9 @@ placeholder="Pl. 3525 Miskolc, Példa utca 12."
 >
 
 
-<label>📞 Telefonszám:</label>
+<label>
+📞 Telefonszám:
+</label>
 
 <input
 type="text"
@@ -829,7 +914,9 @@ placeholder="Pl. +36 30 123 4567"
 >
 
 
-<label>📧 E-mail:</label>
+<label>
+📧 E-mail:
+</label>
 
 <input
 type="email"
@@ -838,7 +925,9 @@ placeholder="Pl. ugyfel@email.hu"
 >
 
 
-<label>🔨 Munka / projekt megnevezése:</label>
+<label>
+🔨 Munka / projekt megnevezése:
+</label>
 
 <input
 type="text"
@@ -847,7 +936,9 @@ placeholder="Pl. Egyedi kerti ülőgarnitúra"
 >
 
 
-<label>⏳ Ajánlat érvényessége (nap):</label>
+<label>
+⏳ Ajánlat érvényessége (nap):
+</label>
 
 <input
 type="number"
@@ -857,7 +948,9 @@ min="1"
 >
 
 
-<label>📝 Megjegyzés:</label>
+<label>
+📝 Megjegyzés:
+</label>
 
 <textarea
 id="ajanlatMegjegyzes"
@@ -875,6 +968,45 @@ onclick="ajanlatKeszitese()"
 
 </div>
 
+</div>
+
+
+<!-- ===================================================== -->
+<!-- APPON BELÜLI ÁRAJÁNLAT -->
+<!-- ===================================================== -->
+
+<div
+id="ajanlatOldal"
+class="ajanlat-oldal"
+>
+
+
+<div class="ajanlat-fejlec-gombok">
+
+<button
+type="button"
+class="be-zar-gomb"
+onclick="ajanlatBezarasa()"
+>
+✕ BEZÁRÁS
+</button>
+
+<button
+type="button"
+class="nyomtatas-gomb"
+onclick="ajanlatNyomtatasa()"
+>
+🖨️ NYOMTATÁS / PDF
+</button>
+
+</div>
+
+
+<div
+id="ajanlatPapir"
+class="ajanlat-papir"
+>
+</div>
 
 </div>
 
@@ -1020,13 +1152,13 @@ const korAdatok = [
 
 let utolsoSzamitas = {
 
-anyag:0,
-festek:0,
-munka:0,
-egyeb:0,
-koltseg:0,
-haszon:0,
-vegso:0
+anyag: 0,
+festek: 0,
+munka: 0,
+egyeb: 0,
+koltseg: 0,
+haszon: 0,
+vegso: 0
 
 };
 
@@ -1036,9 +1168,9 @@ vegso:0
 /* ===================================================== */
 
 function anyagHozzaad(
-mentettTipus=null,
-mentettMeret=null,
-mentettHossz=null
+mentettTipus = null,
+mentettMeret = null,
+mentettHossz = null
 ) {
 
 let lista =
@@ -1047,21 +1179,22 @@ document.getElementById("anyaglista");
 let sor =
 document.createElement("div");
 
-sor.className="anyag-sor";
+sor.className = "anyag-sor";
 
 
 let fejlec =
 document.createElement("div");
 
-fejlec.className="anyag-fejlec";
+fejlec.className = "anyag-fejlec";
 
 fejlec.innerHTML =
 "<span>🔩 Anyag</span>" +
 "<button type='button' class='torles-gomb'>🗑️</button>";
 
 
-fejlec.querySelector(".torles-gomb").onclick =
-function(){
+fejlec.querySelector(
+".torles-gomb"
+).onclick = function() {
 
 sor.remove();
 
@@ -1134,21 +1267,22 @@ sor.appendChild(hosszLabel);
 let hossz =
 document.createElement("input");
 
-hossz.type="number";
-hossz.className="anyag-hossz";
+hossz.type = "number";
+hossz.className = "anyag-hossz";
+
 hossz.value =
 mentettHossz !== null
 ? mentettHossz
 : "0";
 
-hossz.min="0";
-hossz.step="0.01";
-hossz.inputMode="decimal";
+hossz.min = "0";
+hossz.step = "0.01";
+hossz.inputMode = "decimal";
 
 sor.appendChild(hossz);
 
 
-/* SZÁL */
+/* SZÁL INFO */
 
 let szalInfo =
 document.createElement("div");
@@ -1203,8 +1337,7 @@ mentettMeret;
 }
 
 
-tipus.onchange =
-function(){
+tipus.onchange = function() {
 
 meretekFrissit(
 tipus,
@@ -1218,8 +1351,7 @@ szamol();
 };
 
 
-meret.onchange =
-function(){
+meret.onchange = function() {
 
 szalFrissit(sor);
 
@@ -1228,8 +1360,7 @@ szamol();
 };
 
 
-hossz.oninput =
-function(){
+hossz.oninput = function() {
 
 szalFrissit(sor);
 
@@ -1249,45 +1380,44 @@ szamol();
 /* MÉRET LISTA */
 /* ===================================================== */
 
-function meretekFrissit(tipus,meret){
+function meretekFrissit(tipus, meret) {
 
-meret.innerHTML="";
+meret.innerHTML = "";
 
 let adatok;
 
+if(tipus.value === "zar") {
 
-if(tipus.value==="zar"){
-
-adatok=zarAdatok;
-
-}
-
-else if(tipus.value==="lapos"){
-
-adatok=laposAdatok;
+adatok = zarAdatok;
 
 }
 
-else if(tipus.value==="szog"){
+else if(tipus.value === "lapos") {
 
-adatok=szogAdatok;
-
-}
-
-else if(tipus.value==="negyzet"){
-
-adatok=negyzetAdatok;
+adatok = laposAdatok;
 
 }
 
-else{
+else if(tipus.value === "szog") {
 
-adatok=korAdatok;
+adatok = szogAdatok;
+
+}
+
+else if(tipus.value === "negyzet") {
+
+adatok = negyzetAdatok;
+
+}
+
+else {
+
+adatok = korAdatok;
 
 }
 
 
-adatok.forEach(function(adat){
+adatok.forEach(function(adat) {
 
 let option =
 document.createElement("option");
@@ -1312,7 +1442,7 @@ meret.appendChild(option);
 /* SZÁL FRISSÍTÉS */
 /* ===================================================== */
 
-function szalFrissit(sor){
+function szalFrissit(sor) {
 
 let hossz =
 Number(
@@ -1321,23 +1451,19 @@ sor.querySelector(
 ).value
 );
 
+let szalDarab = 0;
 
-let szalDarab=0;
+if(hossz > 0) {
 
-
-if(hossz>0){
-
-szalDarab=
-Math.ceil(
-hossz/6
-);
+szalDarab =
+Math.ceil(hossz / 6);
 
 }
 
 
 sor.querySelector(
 ".szal-darab"
-).innerHTML=
+).innerHTML =
 szalDarab;
 
 
@@ -1346,9 +1472,8 @@ sor.querySelector(
 ".anyag-meret"
 );
 
-
 let ar =
-meret.options.length>0
+meret.options.length > 0
 ?
 Number(
 meret.options[
@@ -1360,12 +1485,12 @@ meret.selectedIndex
 
 
 let anyagAr =
-szalDarab*ar;
+szalDarab * ar;
 
 
 sor.querySelector(
 ".sor-anyag-ar"
-).innerHTML=
+).innerHTML =
 anyagAr.toFixed(0);
 
 }
@@ -1375,24 +1500,23 @@ anyagAr.toFixed(0);
 /* ANYAG SZÁMOLÁS */
 /* ===================================================== */
 
-function anyagSzamolas(){
+function anyagSzamolas() {
 
 let sorok =
 document.querySelectorAll(
 ".anyag-sor"
 );
 
+let zarAnyag = 0;
+let laposAnyag = 0;
+let szogAnyag = 0;
+let negyzetAnyag = 0;
+let korAnyag = 0;
 
-let zarAnyag=0;
-let laposAnyag=0;
-let szogAnyag=0;
-let negyzetAnyag=0;
-let korAnyag=0;
-
-let osszesFelület=0;
+let osszesFelulet = 0;
 
 
-sorok.forEach(function(sor){
+sorok.forEach(function(sor) {
 
 let tipus =
 sor.querySelector(
@@ -1414,7 +1538,7 @@ sor.querySelector(
 );
 
 
-if(hossz<=0){
+if(hossz <= 0) {
 
 return;
 
@@ -1425,7 +1549,7 @@ let index =
 meret.selectedIndex;
 
 
-if(index<0){
+if(index < 0) {
 
 return;
 
@@ -1434,131 +1558,115 @@ return;
 
 let szalDarab =
 Math.ceil(
-hossz/6
+hossz / 6
 );
 
 
 let adat;
 
 
-if(tipus==="zar"){
+if(tipus === "zar") {
 
-adat=zarAdatok[index];
+adat = zarAdatok[index];
 
 zarAnyag +=
-adat[1]*szalDarab;
+adat[1] * szalDarab;
 
-
-let felulet =
-2*
-(adat[2]+adat[3])*
+osszesFelulet +=
+2 *
+(adat[2] + adat[3]) *
 hossz;
-
-osszesFelület +=
-felulet;
 
 }
 
 
-else if(tipus==="lapos"){
+else if(tipus === "lapos") {
 
-adat=laposAdatok[index];
+adat = laposAdatok[index];
 
 laposAnyag +=
-adat[1]*szalDarab;
+adat[1] * szalDarab;
 
-
-let felulet =
-2*
-(adat[2]+adat[3])*
+osszesFelulet +=
+2 *
+(adat[2] + adat[3]) *
 hossz;
-
-osszesFelület +=
-felulet;
 
 }
 
 
-else if(tipus==="szog"){
+else if(tipus === "szog") {
 
-adat=szogAdatok[index];
+adat = szogAdatok[index];
 
 szogAnyag +=
-adat[1]*szalDarab;
+adat[1] * szalDarab;
 
-
-let felulet =
-2*
+osszesFelulet +=
+2 *
 (
-adat[2]+
-adat[3]-
+adat[2] +
+adat[3] -
 adat[4]
-)*
+) *
 hossz;
-
-osszesFelület +=
-felulet;
 
 }
 
 
-else if(tipus==="negyzet"){
+else if(tipus === "negyzet") {
 
-adat=negyzetAdatok[index];
+adat = negyzetAdatok[index];
 
 negyzetAnyag +=
-adat[1]*szalDarab;
+adat[1] * szalDarab;
 
-
-let felulet =
-4*
-adat[2]*
+osszesFelulet +=
+4 *
+adat[2] *
 hossz;
-
-osszesFelület +=
-felulet;
 
 }
 
 
-else if(tipus==="kor"){
+else {
 
-adat=korAdatok[index];
+adat = korAdatok[index];
 
 korAnyag +=
-adat[1]*szalDarab;
+adat[1] * szalDarab;
 
-
-let felulet =
-Math.PI*
-adat[2]*
+osszesFelulet +=
+Math.PI *
+adat[2] *
 hossz;
-
-osszesFelület +=
-felulet;
 
 }
 
 });
 
 
-return{
+return {
 
-zarAnyag:zarAnyag,
-laposAnyag:laposAnyag,
-szogAnyag:szogAnyag,
-negyzetAnyag:negyzetAnyag,
-korAnyag:korAnyag,
+zarAnyag: zarAnyag,
+
+laposAnyag: laposAnyag,
+
+szogAnyag: szogAnyag,
+
+negyzetAnyag: negyzetAnyag,
+
+korAnyag: korAnyag,
 
 anyagkoltseg:
-zarAnyag+
-laposAnyag+
-szogAnyag+
-negyzetAnyag+
+zarAnyag +
+laposAnyag +
+szogAnyag +
+negyzetAnyag +
 korAnyag,
 
 felulet:
-osszesFelület
+osszesFelulet
 
 };
 
@@ -1569,7 +1677,7 @@ osszesFelület
 /* FŐ SZÁMOLÁS */
 /* ===================================================== */
 
-function szamol(){
+function szamol() {
 
 let anyag =
 anyagSzamolas();
@@ -1603,30 +1711,29 @@ document.getElementById(
 );
 
 
-let szuksegesFestek=0;
-let kikeverendoFestek=0;
-let festekKoltseg=0;
+let szuksegesFestek = 0;
+let kikeverendoFestek = 0;
+let festekKoltseg = 0;
 
 
 if(
-felulet>0 &&
-kiadossag>0
-){
+felulet > 0 &&
+kiadossag > 0
+) {
 
 szuksegesFestek =
-felulet/
+felulet /
 kiadossag;
 
 
 kikeverendoFestek =
 Math.ceil(
-szuksegesFestek/
-0.5
-)*0.5;
+szuksegesFestek / 0.5
+) * 0.5;
 
 
 festekKoltseg =
-kikeverendoFestek*
+kikeverendoFestek *
 festekAr;
 
 }
@@ -1668,23 +1775,23 @@ document.getElementById(
 );
 
 
-let alapozoMennyiseg=0;
-let alapozoKoltseg=0;
+let alapozoMennyiseg = 0;
+let alapozoKoltseg = 0;
 
 
 if(
-alapozo===1 &&
-felulet>0 &&
-alapozoKiadossag>0
-){
+alapozo === 1 &&
+felulet > 0 &&
+alapozoKiadossag > 0
+) {
 
 alapozoMennyiseg =
-felulet/
+felulet /
 alapozoKiadossag;
 
 
 alapozoKoltseg =
-alapozoMennyiseg*
+alapozoMennyiseg *
 10000;
 
 }
@@ -1702,10 +1809,8 @@ document.getElementById(
 alapozoKoltseg.toFixed(0);
 
 
-/* FESTÉK ÖSSZESEN */
-
 let festekOsszesen =
-festekKoltseg+
+festekKoltseg +
 alapozoKoltseg;
 
 
@@ -1742,20 +1847,20 @@ document.getElementById(
 
 
 let koltseg =
-anyag.anyagkoltseg+
-festekOsszesen+
-munka+
+anyag.anyagkoltseg +
+festekOsszesen +
+munka +
 egyeb;
 
 
 let haszonAr =
-koltseg*
-haszon/
+koltseg *
+haszon /
 100;
 
 
 let vegso =
-koltseg+
+koltseg +
 haszonAr;
 
 
@@ -1764,74 +1869,74 @@ haszonAr;
 document.getElementById(
 "zaranyag"
 ).innerHTML =
-anyag.zarAnyag.toFixed(0)+
+anyag.zarAnyag.toFixed(0) +
 " Ft";
 
 
 document.getElementById(
 "laposanyag"
 ).innerHTML =
-anyag.laposAnyag.toFixed(0)+
+anyag.laposAnyag.toFixed(0) +
 " Ft";
 
 
 document.getElementById(
 "szoganyag"
 ).innerHTML =
-anyag.szogAnyag.toFixed(0)+
+anyag.szogAnyag.toFixed(0) +
 " Ft";
 
 
 document.getElementById(
 "negyzetanyag"
 ).innerHTML =
-anyag.negyzetAnyag.toFixed(0)+
+anyag.negyzetAnyag.toFixed(0) +
 " Ft";
 
 
 document.getElementById(
 "koranyag"
 ).innerHTML =
-anyag.korAnyag.toFixed(0)+
+anyag.korAnyag.toFixed(0) +
 " Ft";
 
 
 document.getElementById(
 "anyag"
 ).innerHTML =
-anyag.anyagkoltseg.toFixed(0)+
+anyag.anyagkoltseg.toFixed(0) +
 " Ft";
 
 
 document.getElementById(
 "festekEredmeny"
 ).innerHTML =
-festekOsszesen.toFixed(0)+
+festekOsszesen.toFixed(0) +
 " Ft";
 
 
 document.getElementById(
 "koltseg"
 ).innerHTML =
-koltseg.toFixed(0)+
+koltseg.toFixed(0) +
 " Ft";
 
 
 document.getElementById(
 "haszonAr"
 ).innerHTML =
-haszonAr.toFixed(0)+
+haszonAr.toFixed(0) +
 " Ft";
 
 
 document.getElementById(
 "vegso"
 ).innerHTML =
-vegso.toFixed(0)+
+vegso.toFixed(0) +
 " Ft";
 
 
-utolsoSzamitas={
+utolsoSzamitas = {
 
 anyag:
 anyag.anyagkoltseg,
@@ -1863,14 +1968,14 @@ vegso
 /* PROJEKT ADATOK */
 /* ===================================================== */
 
-function projektAdatok(){
+function projektAdatok() {
 
-let anyagok=[];
+let anyagok = [];
 
 
 document.querySelectorAll(
 ".anyag-sor"
-).forEach(function(sor){
+).forEach(function(sor) {
 
 anyagok.push({
 
@@ -1894,9 +1999,9 @@ sor.querySelector(
 });
 
 
-return{
+return {
 
-anyagok:anyagok,
+anyagok: anyagok,
 
 festekTipus:
 document.getElementById(
@@ -1974,10 +2079,10 @@ document.getElementById(
 
 
 /* ===================================================== */
-/* PROJEKT MENTÉSE */
+/* PROJEKT MENTÉS */
 /* ===================================================== */
 
-function projektMentese(){
+function projektMentese() {
 
 let nev =
 document.getElementById(
@@ -1985,7 +2090,7 @@ document.getElementById(
 ).value.trim();
 
 
-if(!nev){
+if(!nev) {
 
 alert(
 "Írd be a projekt nevét!"
@@ -2000,11 +2105,11 @@ let projektek =
 JSON.parse(
 localStorage.getItem(
 "tarOlProjektek"
-)||"{}"
+) || "{}"
 );
 
 
-projektek[nev]=
+projektek[nev] =
 projektAdatok();
 
 
@@ -2018,7 +2123,7 @@ projektListaFrissit();
 
 
 alert(
-"✅ Projekt elmentve:\n"+
+"✅ Projekt elmentve:\n" +
 nev
 );
 
@@ -2029,7 +2134,7 @@ nev
 /* PROJEKT LISTA */
 /* ===================================================== */
 
-function projektListaFrissit(){
+function projektListaFrissit() {
 
 let doboz =
 document.getElementById(
@@ -2041,7 +2146,7 @@ let projektek =
 JSON.parse(
 localStorage.getItem(
 "tarOlProjektek"
-)||"{}"
+) || "{}"
 );
 
 
@@ -2049,11 +2154,11 @@ let nevek =
 Object.keys(projektek);
 
 
-if(nevek.length===0){
+if(nevek.length === 0) {
 
-doboz.innerHTML=
-"<div class='projekt-ures'>"+
-"Nincs még mentett projekt."+
+doboz.innerHTML =
+"<div class='projekt-ures'>" +
+"Nincs még mentett projekt." +
 "</div>";
 
 return;
@@ -2061,40 +2166,43 @@ return;
 }
 
 
-doboz.innerHTML=
+doboz.innerHTML =
 "<label>📂 Mentett projektek:</label>";
 
 
-nevek.forEach(function(nev){
+nevek.forEach(function(nev) {
 
 let elem =
 document.createElement("div");
 
-elem.className=
+elem.className =
 "projekt-elem";
 
 
 let nevSpan =
 document.createElement("span");
 
-nevSpan.className=
+nevSpan.className =
 "projekt-nev";
 
-nevSpan.textContent=
+nevSpan.textContent =
 nev;
 
 
 let betolt =
 document.createElement("button");
 
-betolt.type="button";
-betolt.className=
+betolt.type =
+"button";
+
+betolt.className =
 "projekt-elem-gomb";
 
-betolt.innerHTML="📂";
+betolt.innerHTML =
+"📂";
 
-betolt.onclick=
-function(){
+betolt.onclick =
+function() {
 
 projektBetoltese(nev);
 
@@ -2104,14 +2212,17 @@ projektBetoltese(nev);
 let torol =
 document.createElement("button");
 
-torol.type="button";
-torol.className=
+torol.type =
+"button";
+
+torol.className =
 "projekt-elem-gomb";
 
-torol.innerHTML="🗑️";
+torol.innerHTML =
+"🗑️";
 
-torol.onclick=
-function(){
+torol.onclick =
+function() {
 
 projektTorlese(nev);
 
@@ -2130,16 +2241,16 @@ doboz.appendChild(elem);
 
 
 /* ===================================================== */
-/* PROJEKT BETÖLTÉSE */
+/* PROJEKT BETÖLTÉS */
 /* ===================================================== */
 
-function projektBetoltese(nev){
+function projektBetoltese(nev) {
 
 let projektek =
 JSON.parse(
 localStorage.getItem(
 "tarOlProjektek"
-)||"{}"
+) || "{}"
 );
 
 
@@ -2147,7 +2258,7 @@ let projekt =
 projektek[nev];
 
 
-if(!projekt){
+if(!projekt) {
 
 alert(
 "A projekt nem található."
@@ -2160,35 +2271,36 @@ return;
 
 document.getElementById(
 "projektNev"
-).value=
+).value =
 nev;
 
 
 document.getElementById(
 "anyaglista"
-).innerHTML="";
+).innerHTML =
+"";
 
 
 projekt.anyagok.forEach(
-function(anyag){
+function(anyag) {
 
 let adatok;
 
 
-if(anyag.tipus==="zar")
-adatok=zarAdatok;
+if(anyag.tipus === "zar")
+adatok = zarAdatok;
 
-else if(anyag.tipus==="lapos")
-adatok=laposAdatok;
+else if(anyag.tipus === "lapos")
+adatok = laposAdatok;
 
-else if(anyag.tipus==="szog")
-adatok=szogAdatok;
+else if(anyag.tipus === "szog")
+adatok = szogAdatok;
 
-else if(anyag.tipus==="negyzet")
-adatok=negyzetAdatok;
+else if(anyag.tipus === "negyzet")
+adatok = negyzetAdatok;
 
 else
-adatok=korAdatok;
+adatok = korAdatok;
 
 
 let meretIndex =
@@ -2196,11 +2308,11 @@ Number(anyag.meret);
 
 
 if(
-meretIndex<0 ||
-meretIndex>=adatok.length
-){
+meretIndex < 0 ||
+meretIndex >= adatok.length
+) {
 
-meretIndex=0;
+meretIndex = 0;
 
 }
 
@@ -2214,97 +2326,96 @@ anyag.hossz
 });
 
 
+
 document.getElementById(
 "festekTipus"
-).value=
-projekt.festekTipus;
+).value =
+projekt.festekTipus || "6000";
 
 
 document.getElementById(
 "kiadossag"
-).value=
-projekt.kiadossag;
+).value =
+projekt.kiadossag || "8";
 
 
 document.getElementById(
 "alapozo"
-).value=
-projekt.alapozo;
+).value =
+projekt.alapozo || "0";
 
 
 document.getElementById(
 "alapozoKiadossag"
-).value=
-projekt.alapozoKiadossag;
+).value =
+projekt.alapozoKiadossag || "8";
 
 
 document.getElementById(
 "munka"
-).value=
-projekt.munka;
+).value =
+projekt.munka || "0";
 
 
 document.getElementById(
 "egyeb"
-).value=
-projekt.egyeb;
+).value =
+projekt.egyeb || "0";
 
 
 document.getElementById(
 "haszon"
-).value=
-projekt.haszon;
+).value =
+projekt.haszon || "30";
 
-
-/* ÁRAJÁNLAT */
 
 document.getElementById(
 "ajanlatUgyfel"
-).value=
-projekt.ajanlatUgyfel||"";
+).value =
+projekt.ajanlatUgyfel || "";
 
 
 document.getElementById(
 "ajanlatCim"
-).value=
-projekt.ajanlatCim||"";
+).value =
+projekt.ajanlatCim || "";
 
 
 document.getElementById(
 "ajanlatTelefon"
-).value=
-projekt.ajanlatTelefon||"";
+).value =
+projekt.ajanlatTelefon || "";
 
 
 document.getElementById(
 "ajanlatEmail"
-).value=
-projekt.ajanlatEmail||"";
+).value =
+projekt.ajanlatEmail || "";
 
 
 document.getElementById(
 "ajanlatMunka"
-).value=
-projekt.ajanlatMunka||"";
+).value =
+projekt.ajanlatMunka || "";
 
 
 document.getElementById(
 "ajanlatErvenyesseg"
-).value=
-projekt.ajanlatErvenyesseg||"15";
+).value =
+projekt.ajanlatErvenyesseg || "15";
 
 
 document.getElementById(
 "ajanlatMegjegyzes"
-).value=
-projekt.ajanlatMegjegyzes||"";
+).value =
+projekt.ajanlatMegjegyzes || "";
 
 
 szamol();
 
 
 alert(
-"📂 Projekt betöltve:\n"+
+"📂 Projekt betöltve:\n" +
 nev
 );
 
@@ -2312,14 +2423,14 @@ nev
 
 
 /* ===================================================== */
-/* PROJEKT TÖRLÉSE */
+/* PROJEKT TÖRLÉS */
 /* ===================================================== */
 
-function projektTorlese(nev){
+function projektTorlese(nev) {
 
 let biztos =
 confirm(
-"Biztosan törlöd ezt a projektet?\n\n"+
+"Biztosan törlöd ezt a projektet?\n\n" +
 nev
 );
 
@@ -2332,7 +2443,7 @@ let projektek =
 JSON.parse(
 localStorage.getItem(
 "tarOlProjektek"
-)||"{}"
+) || "{}"
 );
 
 
@@ -2354,11 +2465,11 @@ projektListaFrissit();
 /* ÚJ PROJEKT */
 /* ===================================================== */
 
-function ujProjekt(){
+function ujProjekt() {
 
 let biztos =
 confirm(
-"Új projekt indítása?\n\n"+
+"Új projekt indítása?\n\n" +
 "A jelenlegi kalkuláció törlődik."
 );
 
@@ -2369,82 +2480,98 @@ return;
 
 document.getElementById(
 "projektNev"
-).value="";
+).value =
+"";
 
 
 document.getElementById(
 "anyaglista"
-).innerHTML="";
+).innerHTML =
+"";
 
 
 document.getElementById(
 "festekTipus"
-).value="6000";
+).value =
+"6000";
 
 
 document.getElementById(
 "kiadossag"
-).value="8";
+).value =
+"8";
 
 
 document.getElementById(
 "alapozo"
-).value="0";
+).value =
+"0";
 
 
 document.getElementById(
 "alapozoKiadossag"
-).value="8";
+).value =
+"8";
 
 
 document.getElementById(
 "munka"
-).value="0";
+).value =
+"0";
 
 
 document.getElementById(
 "egyeb"
-).value="0";
+).value =
+"0";
 
 
 document.getElementById(
 "haszon"
-).value="30";
+).value =
+"30";
 
 
 document.getElementById(
 "ajanlatUgyfel"
-).value="";
+).value =
+"";
 
 
 document.getElementById(
 "ajanlatCim"
-).value="";
+).value =
+"";
 
 
 document.getElementById(
 "ajanlatTelefon"
-).value="";
+).value =
+"";
 
 
 document.getElementById(
 "ajanlatEmail"
-).value="";
+).value =
+"";
 
 
 document.getElementById(
 "ajanlatMunka"
-).value="";
+).value =
+"";
 
 
 document.getElementById(
 "ajanlatErvenyesseg"
-).value="15";
+).value =
+"15";
 
 
 document.getElementById(
 "ajanlatMegjegyzes"
-).value="";
+).value =
+"";
 
 
 anyagHozzaad();
@@ -2458,7 +2585,7 @@ szamol();
 /* AJÁNLATSZÁM */
 /* ===================================================== */
 
-function kovetkezoAjanlatSzam(){
+function ajanlatSzamAdatok() {
 
 let ev =
 new Date().getFullYear();
@@ -2468,66 +2595,37 @@ let sorszam =
 Number(
 localStorage.getItem(
 "tarOlAjanlatSorszam"
-)||"0"
-)+1;
+) || "0"
+) + 1;
 
 
-let szam =
-String(
-sorszam
-).padStart(
-4,
-"0"
-);
+return {
 
+ev: ev,
 
-return{
-
-ev:ev,
-
-sorszam:sorszam,
+sorszam: sorszam,
 
 teljes:
-"TOM-"+
-ev+
-"-"+
-szam
+"TOM-" +
+ev +
+"-" +
+String(sorszam).padStart(4,"0")
 
 };
 
 }
 
 
-function ajanlatSzamMegjelenitese(){
+function ajanlatSzamMegjelenitese() {
 
-let ev =
-new Date().getFullYear();
-
-
-let sorszam =
-Number(
-localStorage.getItem(
-"tarOlAjanlatSorszam"
-)||"0"
-)+1;
-
-
-let szam =
-String(
-sorszam
-).padStart(
-4,
-"0"
-);
+let adat =
+ajanlatSzamAdatok();
 
 
 document.getElementById(
 "kovetkezoAjanlatSzam"
-).innerHTML=
-"TOM-"+
-ev+
-"-"+
-szam;
+).innerHTML =
+adat.teljes;
 
 }
 
@@ -2536,49 +2634,48 @@ szam;
 /* FORMÁZÁS */
 /* ===================================================== */
 
-function penz(ertek){
+function penz(ertek) {
 
 return Number(
 ertek
 ).toLocaleString(
-"hu-HU"
-)+" Ft";
+"hu-HU",
+{
+maximumFractionDigits: 2
+}
+) + " Ft";
 
 }
 
 
-function magyarDatum(datum){
+function datumMagyar(datum) {
 
-return datum.getFullYear()+
-"."+
+return datum.getFullYear() +
+"." +
 String(
-datum.getMonth()+1
-).padStart(2,"0")+
-"."+
+datum.getMonth() + 1
+).padStart(2,"0") +
+"." +
 String(
 datum.getDate()
-).padStart(2,"0")+
+).padStart(2,"0") +
 ".";
 
 }
 
 
 /* ===================================================== */
-/* TÉTELES ANYAGOK */
+/* TÉTELES ANYAGSOROK */
 /* ===================================================== */
 
-function ajanlatAnyagSorok(){
+function ajanlatAnyagSorok() {
 
-let sorok =
+let html = "";
+
+
 document.querySelectorAll(
 ".anyag-sor"
-);
-
-
-let html="";
-
-
-sorok.forEach(function(sor){
+).forEach(function(sor) {
 
 let tipus =
 sor.querySelector(
@@ -2600,7 +2697,7 @@ sor.querySelector(
 );
 
 
-if(hossz<=0)
+if(hossz <= 0)
 return;
 
 
@@ -2608,7 +2705,7 @@ let index =
 meret.selectedIndex;
 
 
-if(index<0)
+if(index < 0)
 return;
 
 
@@ -2616,54 +2713,50 @@ let adat;
 let tipusNev;
 
 
-if(tipus==="zar"){
+if(tipus === "zar") {
 
-adat=zarAdatok[index];
-tipusNev="Zártszelvény";
-
-}
-
-else if(tipus==="lapos"){
-
-adat=laposAdatok[index];
-tipusNev="Laposacél";
+adat = zarAdatok[index];
+tipusNev = "Zártszelvény";
 
 }
 
-else if(tipus==="szog"){
+else if(tipus === "lapos") {
 
-adat=szogAdatok[index];
-tipusNev="Szögvas";
-
-}
-
-else if(tipus==="negyzet"){
-
-adat=negyzetAdatok[index];
-tipusNev="Négyzetacél";
+adat = laposAdatok[index];
+tipusNev = "Laposacél";
 
 }
 
-else{
+else if(tipus === "szog") {
 
-adat=korAdatok[index];
-tipusNev="Köracél";
+adat = szogAdatok[index];
+tipusNev = "Szögvas";
 
 }
 
+else if(tipus === "negyzet") {
 
-let nev =
-adat[0];
+adat = negyzetAdatok[index];
+tipusNev = "Négyzetacél";
+
+}
+
+else {
+
+adat = korAdatok[index];
+tipusNev = "Köracél";
+
+}
 
 
 let szalDarab =
 Math.ceil(
-hossz/6
+hossz / 6
 );
 
 
 let osszeg =
-adat[1]*
+adat[1] *
 szalDarab;
 
 
@@ -2679,12 +2772,11 @@ ${tipusNev}
 
 <br>
 
-${nev}
+${adat[0]}
 
 </td>
 
-
-<td class="mennyiseg">
+<td>
 
 ${hossz.toFixed(2)} m
 
@@ -2695,7 +2787,6 @@ ${szalDarab} db × 6 m
 </small>
 
 </td>
-
 
 <td>
 
@@ -2708,7 +2799,6 @@ ${penz(adat[1])}
 </small>
 
 </td>
-
 
 <td>
 
@@ -2734,7 +2824,7 @@ return html;
 /* ÁRAJÁNLAT KÉSZÍTÉSE */
 /* ===================================================== */
 
-function ajanlatKeszitese(){
+function ajanlatKeszitese() {
 
 szamol();
 
@@ -2774,7 +2864,7 @@ Number(
 document.getElementById(
 "ajanlatErvenyesseg"
 ).value
-)||15;
+) || 15;
 
 
 let megjegyzes =
@@ -2783,7 +2873,7 @@ document.getElementById(
 ).value.trim();
 
 
-if(!ugyfel){
+if(!ugyfel) {
 
 alert(
 "Írd be az ügyfél nevét!"
@@ -2794,7 +2884,7 @@ return;
 }
 
 
-if(!munka){
+if(!munka) {
 
 alert(
 "Írd be a munka / projekt megnevezését!"
@@ -2808,7 +2898,7 @@ return;
 /* AJÁNLATSZÁM */
 
 let ajanlat =
-kovetkezoAjanlatSzam();
+ajanlatSzamAdatok();
 
 
 localStorage.setItem(
@@ -2820,8 +2910,6 @@ ajanlat.sorszam
 ajanlatSzamMegjelenitese();
 
 
-/* DÁTUM */
-
 let datum =
 new Date();
 
@@ -2831,23 +2919,26 @@ new Date();
 
 
 ervenyesDatum.setDate(
-ervenyesDatum.getDate()+
+ervenyesDatum.getDate() +
 ervenyesseg
 );
 
 
-/* FESTÉK ADATOK */
+/* FESTÉK */
 
-let festekTipus =
+let festekSelect =
 document.getElementById(
 "festekTipus"
 );
 
 
 let festekNev =
-festekTipus.options[
-festekTipus.selectedIndex
-].text;
+festekSelect
+.options[
+festekSelect.selectedIndex
+]
+.text
+.split(" – ")[0];
 
 
 let felulet =
@@ -2877,7 +2968,7 @@ document.getElementById(
 let alapozoHasznalat =
 document.getElementById(
 "alapozo"
-).value==="1";
+).value === "1";
 
 
 let alapozoMennyiseg =
@@ -2896,65 +2987,50 @@ document.getElementById(
 );
 
 
-/* TÉTELES ANYAG */
+/* ANYAGOK */
 
 let anyagSorok =
 ajanlatAnyagSorok();
 
 
-let nyomtato =
-window.open(
-"",
-"_blank"
-);
+/* FESTÉK SOROK */
+
+let festekSorok = "";
 
 
-if(!nyomtato){
+if(felulet > 0) {
 
-alert(
-"A böngésző blokkolta az új ablakot. Engedélyezd a felugró ablakokat, majd próbáld újra."
-);
-
-return;
-
-}
-
-
-/* FESTÉK TÉTELEK */
-
-let festekSorok = `
+festekSorok += `
 
 <tr>
 
 <td>
 
-<strong>Festés</strong>
+<strong>
+🎨 Festés
+</strong>
 
 <br>
 
 ${felulet.toFixed(2)} m²
+
 <br>
 
 <small>
-${festekNev.split(" – ")[0]}
+${festekNev}
 </small>
 
 </td>
 
-
-<td class="mennyiseg">
+<td>
 
 ${festekMennyiseg.toFixed(2)} l
 
 </td>
 
-
 <td>
-
 —
-
 </td>
-
 
 <td>
 
@@ -2968,8 +3044,10 @@ ${penz(festekKoltseg)}
 
 `;
 
+}
 
-if(alapozoHasznalat){
+
+if(alapozoHasznalat) {
 
 festekSorok += `
 
@@ -2977,7 +3055,9 @@ festekSorok += `
 
 <td>
 
-<strong>Alapozás</strong>
+<strong>
+🪣 Alapozás
+</strong>
 
 <br>
 
@@ -2985,20 +3065,15 @@ ${felulet.toFixed(2)} m²
 
 </td>
 
-
-<td class="mennyiseg">
+<td>
 
 ${alapozoMennyiseg.toFixed(2)} l
 
 </td>
 
-
 <td>
-
 10 000 Ft/l
-
 </td>
-
 
 <td>
 
@@ -3015,12 +3090,12 @@ ${penz(alapozoKoltseg)}
 }
 
 
-/* MUNKADÍJ */
+/* EGYÉB TÉTELEK */
 
 let egyebSorok = "";
 
 
-if(utolsoSzamitas.munka>0){
+if(utolsoSzamitas.munka > 0) {
 
 egyebSorok += `
 
@@ -3030,18 +3105,20 @@ egyebSorok += `
 <strong>🔧 Munkadíj</strong>
 </td>
 
-<td class="mennyiseg">
-—
-</td>
-
 <td>
 —
 </td>
 
 <td>
+—
+</td>
+
+<td>
+
 <strong>
 ${penz(utolsoSzamitas.munka)}
 </strong>
+
 </td>
 
 </tr>
@@ -3051,18 +3128,14 @@ ${penz(utolsoSzamitas.munka)}
 }
 
 
-if(utolsoSzamitas.egyeb>0){
+if(utolsoSzamitas.egyeb > 0) {
 
 egyebSorok += `
 
 <tr>
 
 <td>
-<strong>Egyéb költség</strong>
-</td>
-
-<td class="mennyiseg">
-—
+<strong>📦 Egyéb költség</strong>
 </td>
 
 <td>
@@ -3070,9 +3143,15 @@ egyebSorok += `
 </td>
 
 <td>
+—
+</td>
+
+<td>
+
 <strong>
 ${penz(utolsoSzamitas.egyeb)}
 </strong>
+
 </td>
 
 </tr>
@@ -3087,238 +3166,44 @@ ${penz(utolsoSzamitas.egyeb)}
 let megjegyzesHtml =
 megjegyzes
 ?
-megjegyzes.replace(
-(/\n/g),
-"<br>"
-)
+megjegyzes
+.replace(/\n/g,"<br>")
 :
 "Az ajánlat a feltüntetett műszaki és pénzügyi tartalom alapján készült.";
 
 
-/* TELJES HTML */
+/* ===================================================== */
+/* AJÁNLAT HTML */
+/* ===================================================== */
 
 let html = `
 
-<!DOCTYPE html>
-
-<html lang="hu">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1">
-
-<title>
-${ajanlat.teljes} – Tar-Ol Metal
-</title>
-
-<style>
-
-@page{
-size:A4;
-margin:14mm;
-}
-
-*{
-box-sizing:border-box;
-}
-
-body{
-margin:0;
-font-family:Arial,sans-serif;
-color:#111;
-background:white;
-}
-
-.oldal{
-width:100%;
-max-width:180mm;
-margin:auto;
-}
-
-.fejlec{
-border-bottom:3px solid #111;
-padding-bottom:12px;
-margin-bottom:20px;
-}
-
-.logo{
-font-size:27px;
-font-weight:bold;
-}
-
-.alcim{
-margin-top:5px;
-font-size:13px;
-color:#555;
-}
-
-.cim{
-text-align:center;
-font-size:27px;
-font-weight:bold;
-margin:20px 0;
-}
-
-.info-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
-margin-bottom:18px;
-}
-
-.doboz{
-border:1px solid #ccc;
-border-radius:7px;
-padding:11px;
-}
-
-.doboz-cim{
-font-weight:bold;
-font-size:12px;
-color:#555;
-margin-bottom:6px;
-}
-
-.doboz-tartalom{
-font-size:13px;
-line-height:1.5;
-}
-
-.munka{
-margin:16px 0;
-padding:11px;
-background:#f2f2f2;
-border-radius:7px;
-font-size:14px;
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-margin-top:15px;
-}
-
-th,td{
-border-bottom:1px solid #ccc;
-padding:8px 5px;
-text-align:left;
-font-size:12px;
-vertical-align:top;
-}
-
-th{
-background:#eeeeee;
-font-size:12px;
-}
-
-th:nth-child(2),
-td:nth-child(2){
-text-align:center;
-}
-
-th:last-child,
-td:last-child{
-text-align:right;
-}
-
-small{
-font-size:10px;
-color:#666;
-}
-
-.osszesito{
-margin-top:15px;
-margin-left:auto;
-width:65%;
-}
-
-.osszesito-sor{
-display:flex;
-justify-content:space-between;
-padding:6px 0;
-border-bottom:1px solid #ddd;
-font-size:13px;
-}
-
-.vegosszeg{
-margin-top:10px;
-padding:13px;
-background:#eee;
-border-radius:7px;
-font-size:20px;
-font-weight:bold;
-display:flex;
-justify-content:space-between;
-}
-
-.feltetelek{
-margin-top:25px;
-padding-top:12px;
-border-top:1px solid #ccc;
-font-size:11px;
-line-height:1.5;
-}
-
-.alairas{
-margin-top:45px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:50px;
-}
-
-.alairas-doboz{
-border-top:1px solid #111;
-padding-top:6px;
-font-size:12px;
-}
-
-.lablec{
-margin-top:25px;
-text-align:center;
-font-size:10px;
-color:#777;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="oldal">
-
-
-<div class="fejlec">
-
-<div class="logo">
+<div class="ajanlat-logo">
 🔩 TAR-OL METAL
 </div>
 
-<div class="alcim">
+<div class="ajanlat-alcim">
 Egyedi fém- és fém-fa munkák
 </div>
 
-</div>
+<div class="ajanlat-vonal"></div>
 
 
-<div class="cim">
+<div class="ajanlat-cim">
 ÁRAJÁNLAT
 </div>
 
 
-<div class="info-grid">
+<div class="ajanlat-info-grid">
 
 
-<div class="doboz">
+<div class="ajanlat-doboz">
 
-<div class="doboz-cim">
+<div class="ajanlat-doboz-cim">
 AJÁNLAT ADATAI
 </div>
 
-<div class="doboz-tartalom">
+<div class="ajanlat-doboz-tartalom">
 
 <strong>Ajánlatszám:</strong>
 ${ajanlat.teljes}
@@ -3326,7 +3211,7 @@ ${ajanlat.teljes}
 <br>
 
 <strong>Dátum:</strong>
-${magyarDatum(datum)}
+${datumMagyar(datum)}
 
 <br>
 
@@ -3336,20 +3221,20 @@ ${ervenyesseg} nap
 <br>
 
 <strong>Érvényes eddig:</strong>
-${magyarDatum(ervenyesDatum)}
+${datumMagyar(ervenyesDatum)}
 
 </div>
 
 </div>
 
 
-<div class="doboz">
+<div class="ajanlat-doboz">
 
-<div class="doboz-cim">
+<div class="ajanlat-doboz-cim">
 ÜGYFÉL
 </div>
 
-<div class="doboz-tartalom">
+<div class="ajanlat-doboz-tartalom">
 
 <strong>
 ${ugyfel}
@@ -3357,21 +3242,21 @@ ${ugyfel}
 
 <br>
 
-${cim ? cim+"<br>":""}
+${cim ? cim + "<br>" : ""}
 
-${telefon ? "📞 "+telefon+"<br>":""}
+${telefon ? "📞 " + telefon + "<br>" : ""}
 
-${email ? "📧 "+email:""}
-
-</div>
+${email ? "📧 " + email : ""}
 
 </div>
-
 
 </div>
 
 
-<div class="munka">
+</div>
+
+
+<div class="ajanlat-munka">
 
 <strong>
 🔨 Munka / projekt:
@@ -3384,7 +3269,7 @@ ${munka}
 </div>
 
 
-<table>
+<table class="ajanlat-tablazat">
 
 <thead>
 
@@ -3412,25 +3297,18 @@ Egységár
 
 <tbody>
 
-
 ${anyagSorok}
-
 
 ${festekSorok}
 
-
 ${egyebSorok}
-
 
 </tbody>
 
 </table>
 
 
-<div class="osszesito">
-
-
-<div class="vegosszeg">
+<div class="ajanlat-vegosszeg">
 
 <span>
 VÉGÖSSZEG:
@@ -3442,13 +3320,11 @@ ${penz(utolsoSzamitas.vegso)}
 
 </div>
 
-</div>
 
-
-<div class="feltetelek">
+<div class="ajanlat-megjegyzes">
 
 <strong>
-Megjegyzés / feltételek:
+📝 Megjegyzés / feltételek:
 </strong>
 
 <br><br>
@@ -3462,20 +3338,20 @@ Az ajánlat a fenti érvényességi időn belül fogadható el.
 </div>
 
 
-<div class="alairas">
+<div class="ajanlat-alairasok">
 
-<div class="alairas-doboz">
+<div class="alairas">
 TAR-OL METAL
 </div>
 
-<div class="alairas-doboz">
+<div class="alairas">
 Ügyfél
 </div>
 
 </div>
 
 
-<div class="lablec">
+<div class="ajanlat-lablec">
 
 TAR-OL METAL – Egyedi fém- és fém-fa munkák
 
@@ -3486,41 +3362,55 @@ ${ajanlat.teljes}
 
 </div>
 
-
-</div>
-
-
-<script>
-
-window.onload=function(){
-
-setTimeout(
-function(){
-
-window.print();
-
-},
-400
-);
-
-};
-
-<\/script>
-
-</body>
-
-</html>
-
 `;
 
 
-nyomtato.document.open();
+/* MEGJELENÍTÉS */
 
-nyomtato.document.write(
-html
-);
+document.getElementById(
+"ajanlatPapir"
+).innerHTML =
+html;
 
-nyomtato.document.close();
+
+document.getElementById(
+"ajanlatOldal"
+).style.display =
+"block";
+
+
+document.body.style.overflow =
+"hidden";
+
+}
+
+
+/* ===================================================== */
+/* ÁRAJÁNLAT BEZÁRÁSA */
+/* ===================================================== */
+
+function ajanlatBezarasa() {
+
+document.getElementById(
+"ajanlatOldal"
+).style.display =
+"none";
+
+
+document.body.style.overflow =
+"";
+
+
+}
+
+
+/* ===================================================== */
+/* NYOMTATÁS / PDF */
+/* ===================================================== */
+
+function ajanlatNyomtatasa() {
+
+window.print();
 
 }
 
@@ -3537,7 +3427,7 @@ ajanlatSzamMegjelenitese();
 
 
 /* ===================================================== */
-/* AUTOMATIKUS SZÁMOLÁS */
+/* AUTOMATIKUS ÚJRASZÁMOLÁS */
 /* ===================================================== */
 
 document.getElementById(
@@ -3595,9 +3485,7 @@ document.getElementById(
 szamol
 );
 
-
 </script>
-
 
 </body>
 
