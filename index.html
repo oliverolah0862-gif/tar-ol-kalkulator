@@ -1008,11 +1008,29 @@ let utolsoSzamitas={
 ========================================================= */
 
 function adatLista(tipus){
- if(tipus==="zar")return zarAdatok;
- if(tipus==="lapos")return laposAdatok;
- if(tipus==="szog")return szogAdatok;
- if(tipus==="negyzet")return negyzetAdatok;
- return korAdatok;
+
+    // Ha select elemet kapunk, annak az értékét használjuk
+    if(typeof tipus === "object" && tipus !== null){
+        tipus = tipus.value;
+    }
+
+    if(tipus === "zar"){
+        return zarAdatok;
+    }
+
+    if(tipus === "lapos"){
+        return laposAdatok;
+    }
+
+    if(tipus === "szog"){
+        return szogAdatok;
+    }
+
+    if(tipus === "negyzet"){
+        return negyzetAdatok;
+    }
+
+    return korAdatok;
 }
 
 function tipusNev(tipus){
