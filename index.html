@@ -2183,7 +2183,120 @@ function modulBezarasa(id){
 }
 
 function modulNyomtatasa(){
- window.print();
+
+    let oldal;
+
+    if(document.getElementById("bevListaOldal").style.display === "block"){
+        oldal = document.getElementById("bevListaTartalom");
+    }
+
+    else if(document.getElementById("vagasiOldal").style.display === "block"){
+        oldal = document.getElementById("vagasiTartalom");
+    }
+
+    else{
+        return;
+    }
+
+    let nyomtatoAblak = window.open("", "_blank");
+
+    if(!nyomtatoAblak){
+        alert("A nyomtatási ablak megnyitását a böngésző blokkolta. Engedélyezd a felugró ablakokat.");
+        return;
+    }
+
+    let stilus = document.querySelector("style").innerHTML;
+
+    nyomtatoAblak.document.open();
+
+    nyomtatoAblak.document.write(`
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1">
+
+<title>Tar-Ol Metal – Nyomtatás</title>
+
+<style>
+
+${stilus}
+
+body{
+    background:white !important;
+    padding:20px !important;
+}
+
+.kalkulator{
+    display:none !important;
+}
+
+.modul-oldal{
+    display:block !important;
+    position:static !important;
+    padding:0 !important;
+    overflow:visible !important;
+}
+
+.modul-fejlec{
+    display:none !important;
+}
+
+.modul-tartalom{
+    max-width:none !important;
+    padding:0 !important;
+}
+
+@media print{
+
+    .modul-fejlec{
+        display:none !important;
+    }
+
+    @page{
+        size:A4;
+        margin:12mm;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="modul-tartalom">
+
+${oldal.innerHTML}
+
+</div>
+
+<script>
+
+window.onload = function(){
+
+    setTimeout(function(){
+
+        window.print();
+
+    },500);
+
+};
+
+<\/script>
+
+</body>
+
+</html>
+`);
+
+    nyomtatoAblak.document.close();
+
 }
 
 
@@ -2567,7 +2680,113 @@ function ajanlatBezarasa(){
 }
 
 function ajanlatNyomtatasa(){
- window.print();
+
+    let papir =
+        document.getElementById("ajanlatPapir");
+
+    let nyomtatoAblak =
+        window.open("", "_blank");
+
+    if(!nyomtatoAblak){
+
+        alert(
+            "A nyomtatási ablak megnyitását a böngésző blokkolta. Engedélyezd a felugró ablakokat."
+        );
+
+        return;
+    }
+
+    let stilus =
+        document.querySelector("style").innerHTML;
+
+    nyomtatoAblak.document.open();
+
+    nyomtatoAblak.document.write(`
+<!DOCTYPE html>
+
+<html lang="hu">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1">
+
+<title>Tar-Ol Metal – Árajánlat</title>
+
+<style>
+
+${stilus}
+
+body{
+    background:white !important;
+    padding:0 !important;
+    margin:0 !important;
+}
+
+.ajanlat-fejlec-gombok{
+    display:none !important;
+}
+
+.ajanlat-oldal{
+    display:block !important;
+    position:static !important;
+    padding:0 !important;
+    overflow:visible !important;
+}
+
+.ajanlat-papir{
+    max-width:none !important;
+    padding:0 !important;
+}
+
+@media print{
+
+    .ajanlat-fejlec-gombok{
+        display:none !important;
+    }
+
+    @page{
+        size:A4;
+        margin:12mm;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="ajanlat-papir">
+
+${papir.innerHTML}
+
+</div>
+
+<script>
+
+window.onload = function(){
+
+    setTimeout(function(){
+
+        window.print();
+
+    },500);
+
+};
+
+<\/script>
+
+</body>
+
+</html>
+`);
+
+    nyomtatoAblak.document.close();
+
 }
 
 
